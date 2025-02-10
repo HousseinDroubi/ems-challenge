@@ -7,6 +7,7 @@ export default function EmployeeFormComponent() {
   const [text, setText] = useState("");
   const [email, setEmail] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
+  const [date, setDate] = useState("");
 
   return (
     <Form method="post">
@@ -27,6 +28,11 @@ export default function EmployeeFormComponent() {
         type="tel"
         hint="Phone Number"
         onTextChange={(newText: string) => setPhoneNumber(newText)}
+      />
+      <InputTextComponent
+        text={date}
+        type="date"
+        onTextChange={(newText: string) => setDate(newText)}
       />
       <button type="submit">Create Employee</button>
     </Form>
