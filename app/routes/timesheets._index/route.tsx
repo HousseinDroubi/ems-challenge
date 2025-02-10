@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router";
 import { useState } from "react";
 import { getDB } from "~/db/getDB";
+import NavBarComponent from "~/components/NavBarComponent";
 
 export async function loader() {
   const db = await getDB();
@@ -16,6 +17,12 @@ export default function TimesheetsPage() {
 
   return (
     <div>
+      <NavBarComponent
+        pages={[
+          { to: "/timesheets/new", title: "New Timesheet" },
+          { to: "/employees", title: "Employees" },
+        ]}
+      />
       <div>
         <button>Table View</button>
         <button>Calendar View</button>
@@ -50,15 +57,6 @@ export default function TimesheetsPage() {
           </p>
         </div>
       )}
-      <hr />
-      <ul>
-        <li>
-          <a href="/timesheets/new">New Timesheet</a>
-        </li>
-        <li>
-          <a href="/employees">Employees</a>
-        </li>
-      </ul>
     </div>
   );
 }

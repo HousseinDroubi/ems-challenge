@@ -8,6 +8,7 @@ export async function loader() {
 }
 
 import type { ActionFunction } from "react-router";
+import NavBarComponent from "~/components/NavBarComponent";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -28,6 +29,12 @@ export default function NewTimesheetPage() {
   const { employees } = useLoaderData(); // Used to create a select input
   return (
     <div>
+      <NavBarComponent
+        pages={[
+          { to: "/timesheets", title: "Timesheets" },
+          { to: "/employees", title: "Employees" },
+        ]}
+      />
       <h1>Create New Timesheet</h1>
       <Form method="post">
         <div>{/* Use employees to create a select input */}</div>
@@ -46,15 +53,6 @@ export default function NewTimesheetPage() {
         </div>
         <button type="submit">Create Timesheet</button>
       </Form>
-      <hr />
-      <ul>
-        <li>
-          <a href="/timesheets">Timesheets</a>
-        </li>
-        <li>
-          <a href="/employees">Employees</a>
-        </li>
-      </ul>
     </div>
   );
 }

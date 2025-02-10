@@ -1,4 +1,5 @@
 import { Form, redirect, type ActionFunction } from "react-router";
+import NavBarComponent from "~/components/NavBarComponent";
 import { getDB } from "~/db/getDB";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -14,6 +15,12 @@ export const action: ActionFunction = async ({ request }) => {
 export default function NewEmployeePage() {
   return (
     <div>
+      <NavBarComponent
+        pages={[
+          { to: "/employees", title: "Employees" },
+          { to: "/timesheets", title: "Timesheets" },
+        ]}
+      />
       <h1>Create New Employee</h1>
       <Form method="post">
         <div>
@@ -22,15 +29,6 @@ export default function NewEmployeePage() {
         </div>
         <button type="submit">Create Employee</button>
       </Form>
-      <hr />
-      <ul>
-        <li>
-          <a href="/employees">Employees</a>
-        </li>
-        <li>
-          <a href="/timesheets">Timesheets</a>
-        </li>
-      </ul>
     </div>
   );
 }
