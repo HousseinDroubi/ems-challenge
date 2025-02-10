@@ -1,5 +1,5 @@
 import { Form, redirect, type ActionFunction } from "react-router";
-import NavBarComponent from "~/components/NavBarComponent";
+import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { getDB } from "~/db/getDB";
 
 export const action: ActionFunction = async ({ request }) => {

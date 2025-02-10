@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router";
 import { useState } from "react";
 import { getDB } from "~/db/getDB";
-import NavBarComponent from "~/components/NavBarComponent";
+import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 
 export async function loader() {
   const db = await getDB();

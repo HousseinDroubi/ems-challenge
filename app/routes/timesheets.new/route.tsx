@@ -8,7 +8,7 @@ export async function loader() {
 }
 
 import type { ActionFunction } from "react-router";
-import NavBarComponent from "~/components/NavBarComponent";
+import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();

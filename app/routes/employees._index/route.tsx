@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router";
-import NavBarComponent from "~/components/NavBarComponent";
+import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { getDB } from "~/db/getDB";
 
 export async function loader() {
