@@ -1,4 +1,3 @@
-import { title } from "process";
 import { useLoaderData } from "react-router";
 import NavBarComponent from "~/components/NavBarComponent";
 import { getDB } from "~/db/getDB";
