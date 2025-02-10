@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./InputTextComponent.css";
 
-export default function InputTextComponent() {
+export default function InputTextComponent({ text, onTextChange }: any) {
   const [is_focused, setFocused] = useState(false);
 
   return (
@@ -13,7 +13,9 @@ export default function InputTextComponent() {
       <p>Name</p>
       <input
         type="text"
+        value={text}
         required
+        onChange={(e) => onTextChange(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={(event) => setFocused(event.target.value !== "")}
       />
