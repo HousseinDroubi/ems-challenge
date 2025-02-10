@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 import "./NavBarComponent.css";
 
 export default function NavBarComponent({ pages }: any) {
@@ -8,7 +8,7 @@ export default function NavBarComponent({ pages }: any) {
       <ul className="flex j-c-e">
         {pages.map((page: any) => (
           <li>
-            <NavLink to={page.to}>{page.title}</NavLink>
+            <Link to={page.to}>{page.title}</Link>
           </li>
         ))}
       </ul>
