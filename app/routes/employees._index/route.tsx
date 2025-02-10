@@ -13,7 +13,7 @@ export default function EmployeesPage() {
     <div>
       <div>
         {employees.map((employee: any) => (
-          <div>
+          <div key={employee.id}>
             <ul>
               <li>Employee #{employee.id}</li>
               <ul>
