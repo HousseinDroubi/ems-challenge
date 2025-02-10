@@ -7,7 +7,7 @@ export default function NavBarComponent({ pages }: any) {
       <h3>EMS-Challenge</h3>
       <ul className="flex j-c-e">
         {pages.map((page: any) => (
-          <li>
+          <li key={page.to}>
             <Link to={page.to}>{page.title}</Link>
           </li>
         ))}
