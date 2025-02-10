@@ -1,7 +1,7 @@
 export default function NavBarComponent({ pages }: any) {
   return (
     <nav className="nav-bar">
-      <h2>EMS-Challenge</h2>
+      <h3>EMS-Challenge</h3>
       <ul>
         {pages.map((page: any) => (
           <li>
