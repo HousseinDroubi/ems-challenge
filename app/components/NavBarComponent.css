@@ -12,9 +12,4 @@ a {
   background-color: var(--primary);
   padding: 6px;
   text-decoration: none;
-  transition: all 50ms ease-in-out;
-}
-
-.nav-bar a:hover {
-  padding: 7.5px;
 }
