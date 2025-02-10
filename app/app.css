@@ -38,6 +38,9 @@ body {
 .w-100 {
   width: 100%;
 }
+.h-80 {
+  height: 80%;
+}
 
 ul {
   list-style: none;

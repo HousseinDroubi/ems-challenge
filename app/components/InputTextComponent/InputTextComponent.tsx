@@ -12,6 +12,7 @@ export default function InputTextComponent({ text, onTextChange }: any) {
     >
       <p>Name</p>
       <input
+        className="w-100 h-80"
         type="text"
         value={text}
         required
