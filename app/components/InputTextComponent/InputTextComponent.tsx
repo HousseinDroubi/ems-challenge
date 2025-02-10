@@ -12,9 +12,9 @@ export default function InputTextComponent({
 
   return (
     <>
-      <h4 className="title">{title}</h4>
+      <h4 className="title mt-10">{title}</h4>
       <div
-        className={`input-text flex a-i-c ${
+        className={`input-text flex a-i-c mt-5 ${
           is_focused ? "input-text-p-focused" : ""
         }`}
       >
