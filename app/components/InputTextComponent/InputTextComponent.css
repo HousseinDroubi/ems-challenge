@@ -1,9 +1,10 @@
 .input-text {
-  width: 200px;
-  height: 37px;
+  width: 300px;
+  height: 45px;
   border-radius: 5px;
   background-color: #e5e5e5;
   position: relative;
+  padding-left: 10px;
 }
 
 .input-text input {
@@ -18,12 +19,13 @@
 
 .input-text p {
   position: absolute;
-  font-size: small;
-  left: 7px;
-  top: 8px;
+  font-size: medium;
+  left: 10px;
+  top: 11px;
   color: var(--secondary);
   transition: all 100ms ease-in;
 }
+
 .input-text.input-text-p-focused {
   border-width: 0.4px;
   border-color: var(--primary);
@@ -31,12 +33,12 @@
 }
 
 .input-text.input-text-p-focused input {
-  margin-top: 3px;
+  margin-top: 8px;
 }
 
 .input-text.input-text-p-focused p {
   color: var(--primary);
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 700;
   left: 5px;
   top: 0px;

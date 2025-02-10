@@ -6,7 +6,7 @@ export default function InputTextComponent({ text, onTextChange }: any) {
 
   return (
     <div
-      className={`input-text flex j-c-c a-i-c ${
+      className={`input-text flex a-i-c ${
         is_focused ? "input-text-p-focused" : ""
       }`}
     >
