@@ -1,13 +1,11 @@
-.nav-bar h3,
+.nav-bar h1,
 a {
   color: #e5e5e5;
 }
 
 .nav-bar a {
   margin-right: 14px;
-  font-size: small;
-  width: 100px;
-  height: 50px;
+  font-size: large;
   border-radius: 7px;
   background-color: var(--primary);
   padding: 6px;

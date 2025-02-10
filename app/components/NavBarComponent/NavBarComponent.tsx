@@ -4,7 +4,7 @@ import "./NavBarComponent.css";
 export default function NavBarComponent({ pages }: any) {
   return (
     <nav className="nav-bar flex j-c-s-b w-100">
-      <h3>EMS-Challenge</h3>
+      <h1>EMS-Challenge</h1>
       <ul className="flex j-c-e">
         {pages.map((page: any) => (
           <li key={page.to}>
