@@ -1,0 +1,43 @@
+.input-text {
+  width: 200px;
+  height: 37px;
+  border-radius: 5px;
+  background-color: #e5e5e5;
+  position: relative;
+}
+
+.input-text input {
+  border: none;
+  background-color: #e5e5e5;
+}
+
+.input-text input:focus {
+  outline: none;
+  border: none;
+}
+
+.input-text p {
+  position: absolute;
+  font-size: small;
+  left: 7px;
+  top: 8px;
+  color: var(--secondary);
+  transition: all 100ms ease-in;
+}
+.input-text.input-text-p-focused {
+  border-width: 0.4px;
+  border-color: var(--primary);
+  border-style: solid;
+}
+
+.input-text.input-text-p-focused input {
+  margin-top: 3px;
+}
+
+.input-text.input-text-p-focused p {
+  color: var(--primary);
+  font-size: 7px;
+  font-weight: 700;
+  left: 5px;
+  top: 0px;
+}

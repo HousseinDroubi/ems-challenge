@@ -1,10 +1,22 @@
+import { useState } from "react";
 import "./InputTextComponent.css";
 
 export default function InputTextComponent() {
+  const [is_focused, setFocused] = useState(false);
+
   return (
-    <p>
-      <label htmlFor="full_name">Full Name</label>
-      <input type="text" name="full_name" id="full_name" required />
-    </p>
+    <div
+      className={`input-text flex j-c-c a-i-c ${
+        is_focused ? "input-text-p-focused" : ""
+      }`}
+    >
+      <p>Name</p>
+      <input
+        type="text"
+        required
+        onFocus={() => setFocused(true)}
+        onBlur={(event) => setFocused(event.target.value !== "")}
+      />
+    </div>
   );
 }
