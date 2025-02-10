@@ -35,7 +35,7 @@ export default function EmployeeFormComponent() {
       <InputTextComponent
         text={date}
         type="date"
-        title="Phone Number"
+        title="Date of Birth"
         onTextChange={(newText: string) => setDate(newText)}
       />
       <button type="submit">Create Employee</button>
