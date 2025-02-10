@@ -6,13 +6,10 @@ export const action: ActionFunction = async ({ request }) => {
   const full_name = formData.get("full_name");
 
   const db = await getDB();
-  await db.run(
-    'INSERT INTO employees (full_name) VALUES (?)',
-    [full_name]
-  );
+  await db.run("INSERT INTO employees (full_name) VALUES (?)", [full_name]);
 
   return redirect("/employees");
-}
+};
 
 export default function NewEmployeePage() {
   return (
@@ -27,8 +24,12 @@ export default function NewEmployeePage() {
       </Form>
       <hr />
       <ul>
-        <li><a href="/employees">Employees</a></li>
-        <li><a href="/timesheets">Timesheets</a></li>
+        <li>
+          <a href="/employees">Employees</a>
+        </li>
+        <li>
+          <a href="/timesheets">Timesheets</a>
+        </li>
       </ul>
     </div>
   );

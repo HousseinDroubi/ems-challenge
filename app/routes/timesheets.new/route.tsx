@@ -3,7 +3,7 @@ import { getDB } from "~/db/getDB";
 
 export async function loader() {
   const db = await getDB();
-  const employees = await db.all('SELECT id, full_name FROM employees');
+  const employees = await db.all("SELECT id, full_name FROM employees");
   return { employees };
 }
 
@@ -17,12 +17,12 @@ export const action: ActionFunction = async ({ request }) => {
 
   const db = await getDB();
   await db.run(
-    'INSERT INTO timesheets (employee_id, start_time, end_time) VALUES (?, ?, ?)',
+    "INSERT INTO timesheets (employee_id, start_time, end_time) VALUES (?, ?, ?)",
     [employee_id, start_time, end_time]
   );
 
   return redirect("/timesheets");
-}
+};
 
 export default function NewTimesheetPage() {
   const { employees } = useLoaderData(); // Used to create a select input
@@ -30,12 +30,15 @@ export default function NewTimesheetPage() {
     <div>
       <h1>Create New Timesheet</h1>
       <Form method="post">
-        <div>
-          {/* Use employees to create a select input */}
-        </div>
+        <div>{/* Use employees to create a select input */}</div>
         <div>
           <label htmlFor="start_time">Start Time</label>
-          <input type="datetime-local" name="start_time" id="start_time" required />
+          <input
+            type="datetime-local"
+            name="start_time"
+            id="start_time"
+            required
+          />
         </div>
         <div>
           <label htmlFor="end_time">End Time</label>
@@ -45,8 +48,12 @@ export default function NewTimesheetPage() {
       </Form>
       <hr />
       <ul>
-        <li><a href="/timesheets">Timesheets</a></li>
-        <li><a href="/employees">Employees</a></li>
+        <li>
+          <a href="/timesheets">Timesheets</a>
+        </li>
+        <li>
+          <a href="/employees">Employees</a>
+        </li>
       </ul>
     </div>
   );
