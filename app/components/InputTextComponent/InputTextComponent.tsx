@@ -1,7 +1,12 @@
 import { useState } from "react";
 import "./InputTextComponent.css";
 
-export default function InputTextComponent({ text, type, onTextChange }: any) {
+export default function InputTextComponent({
+  text,
+  type,
+  hint,
+  onTextChange,
+}: any) {
   const [is_focused, setFocused] = useState(false);
 
   return (
@@ -10,7 +15,7 @@ export default function InputTextComponent({ text, type, onTextChange }: any) {
         is_focused ? "input-text-p-focused" : ""
       }`}
     >
-      <p>Name</p>
+      <p>{hint}</p>
       <input
         className="w-100 h-80"
         type={type}

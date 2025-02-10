@@ -12,11 +12,13 @@ export default function EmployeeFormComponent() {
       <InputTextComponent
         text={text}
         type="text"
+        hint="Name"
         onTextChange={(newText: string) => setText(newText)}
       />
       <InputTextComponent
         text={email}
         type="email"
+        hint="Email"
         onTextChange={(newText: string) => setEmail(newText)}
       />
       <button type="submit">Create Employee</button>
