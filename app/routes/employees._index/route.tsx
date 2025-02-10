@@ -16,7 +16,7 @@ export default function EmployeesPage() {
       <NavBarComponent
         pages={[
           { to: "/employees/new", title: "New Employee" },
-          { to: "/timesheets/", title: "Timesheets" },
+          { to: "/timesheets", title: "Timesheets" },
         ]}
       />
       <div>
