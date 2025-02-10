@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function EmployeeFormComponent() {
   const [text, setText] = useState("");
+  const [email, setEmail] = useState("");
 
   return (
     <Form method="post">
@@ -12,6 +13,11 @@ export default function EmployeeFormComponent() {
         text={text}
         type="text"
         onTextChange={(newText: string) => setText(newText)}
+      />
+      <InputTextComponent
+        text={email}
+        type="email"
+        onTextChange={(newText: string) => setEmail(newText)}
       />
       <button type="submit">Create Employee</button>
     </Form>
