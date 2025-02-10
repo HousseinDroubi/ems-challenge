@@ -1,6 +1,6 @@
 .nav-bar h1,
 a {
-  color: #e5e5e5;
+  color: var(--ligt-gray);
 }
 
 .nav-bar a {
