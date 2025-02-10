@@ -16,3 +16,17 @@ body {
   --primary: #bc4123;
   --secondary: #2b3452;
 }
+
+/* Reusable classes */
+.flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.j-c-c {
+  justify-content: center;
+}
+.a-i-c {
+  align-items: center;
+}
