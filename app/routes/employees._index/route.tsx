@@ -1,4 +1,6 @@
+import { title } from "process";
 import { useLoaderData } from "react-router";
+import NavBarComponent from "~/components/NavBarComponent";
 import { getDB } from "~/db/getDB";
 
 export async function loader() {
@@ -23,15 +25,12 @@ export default function EmployeesPage() {
           </div>
         ))}
       </div>
-      <hr />
-      <ul>
-        <li>
-          <a href="/employees/new">New Employee</a>
-        </li>
-        <li>
-          <a href="/timesheets/">Timesheets</a>
-        </li>
-      </ul>
+      <NavBarComponent
+        pages={[
+          { to: "/employees/new", title: "New Employee" },
+          { to: "/timesheets/", title: "Timesheets" },
+        ]}
+      />
     </div>
   );
 }
