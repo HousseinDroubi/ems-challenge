@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./InputTextComponent.css";
 
-export default function InputTextComponent({ text, onTextChange }: any) {
+export default function InputTextComponent({ text, type, onTextChange }: any) {
   const [is_focused, setFocused] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ export default function InputTextComponent({ text, onTextChange }: any) {
       <p>Name</p>
       <input
         className="w-100 h-80"
-        type="text"
+        type={type}
         value={text}
         required
         onChange={(e) => onTextChange(e.target.value)}

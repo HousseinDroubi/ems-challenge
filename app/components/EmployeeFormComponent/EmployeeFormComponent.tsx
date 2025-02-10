@@ -10,6 +10,7 @@ export default function EmployeeFormComponent() {
     <Form method="post">
       <InputTextComponent
         text={text}
+        type="text"
         onTextChange={(newText: string) => setText(newText)}
       />
       <button type="submit">Create Employee</button>
