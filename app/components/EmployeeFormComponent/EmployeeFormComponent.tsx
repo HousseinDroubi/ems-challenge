@@ -14,24 +14,28 @@ export default function EmployeeFormComponent() {
       <InputTextComponent
         text={text}
         type="text"
-        hint="Name"
+        title="Name"
+        hint="Enter Name"
         onTextChange={(newText: string) => setText(newText)}
       />
       <InputTextComponent
         text={email}
         type="email"
-        hint="Email"
+        title="Email"
+        hint="Enter Email"
         onTextChange={(newText: string) => setEmail(newText)}
       />
       <InputTextComponent
         text={phone_number}
         type="tel"
-        hint="Phone Number"
+        title="Phone Number"
+        hint="Enter Phone Number"
         onTextChange={(newText: string) => setPhoneNumber(newText)}
       />
       <InputTextComponent
         text={date}
         type="date"
+        title="Phone Number"
         onTextChange={(newText: string) => setDate(newText)}
       />
       <button type="submit">Create Employee</button>
