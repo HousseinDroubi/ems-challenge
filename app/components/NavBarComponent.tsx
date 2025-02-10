@@ -1,4 +1,5 @@
 import { NavLink } from "react-router";
+import "./NavBarComponent.css";
 
 export default function NavBarComponent({ pages }: any) {
   return (
