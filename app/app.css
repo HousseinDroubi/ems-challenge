@@ -30,3 +30,14 @@ body {
 .a-i-c {
   align-items: center;
 }
+.j-c-s-b {
+  justify-content: space-between;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
