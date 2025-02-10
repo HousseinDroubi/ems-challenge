@@ -13,6 +13,12 @@ export default function EmployeesPage() {
   const { employees } = useLoaderData();
   return (
     <div>
+      <NavBarComponent
+        pages={[
+          { to: "/employees/new", title: "New Employee" },
+          { to: "/timesheets/", title: "Timesheets" },
+        ]}
+      />
       <div>
         {employees.map((employee: any) => (
           <div key={employee.id}>
@@ -25,12 +31,6 @@ export default function EmployeesPage() {
           </div>
         ))}
       </div>
-      <NavBarComponent
-        pages={[
-          { to: "/employees/new", title: "New Employee" },
-          { to: "/timesheets/", title: "Timesheets" },
-        ]}
-      />
     </div>
   );
 }
