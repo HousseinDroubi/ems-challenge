@@ -22,7 +22,6 @@ export default function NewEmployeePage() {
           { to: "/timesheets", title: "Timesheets" },
         ]}
       />
-      <h1>Create New Employee</h1>
       <EmployeeFormComponent />
     </div>
   );
