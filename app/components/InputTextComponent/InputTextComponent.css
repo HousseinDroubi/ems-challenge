@@ -24,6 +24,7 @@
   top: 11px;
   color: var(--secondary);
   transition: all 100ms ease-in;
+  pointer-events: none;
 }
 
 .input-text.input-text-p-focused {
