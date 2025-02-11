@@ -40,3 +40,12 @@
   color: var(--light-gray);
   flex-basis: 80%;
 }
+.popup-container main button {
+  font-size: 17px;
+  font-weight: bold;
+  background: inherit;
+  border: none;
+  font-weight: 700;
+  color: var(--light-gray);
+  cursor: pointer;
+}
