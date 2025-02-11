@@ -1,0 +1,16 @@
+.button-submit {
+  background-color: var(--primary);
+  width: 210px;
+  height: 40px;
+  border-radius: 7px;
+  color: var(--light-gray);
+  border: none;
+  cursor: pointer;
+  font-size: medium;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 50ms ease-in;
+}
+
+.button-submit:hover {
+  transform: scale(1.01);
+}
