@@ -98,7 +98,22 @@ export const action: ActionFunction = async ({ request }) => {
     };
   } else {
     const db = await getDB();
-    await db.run("INSERT INTO employees (full_name) VALUES (?)", [full_name]);
+    await db.run(
+      "INSERT INTO employees (full_name,email,phone_number,date_of_birth,place_of_birth,job_title,department,salary,start_date,end_date,job_level) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+      [
+        full_name,
+        email,
+        phone_number,
+        date_of_birth,
+        place_of_birth,
+        job_title,
+        department,
+        salary,
+        start_date,
+        end_date,
+        job_level,
+      ]
+    );
 
     return redirect("/employees");
   }
