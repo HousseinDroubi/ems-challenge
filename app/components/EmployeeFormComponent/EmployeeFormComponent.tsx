@@ -11,7 +11,9 @@ export default function EmployeeFormComponent({ update }: any) {
 
   return (
     <>
-      <h1>{update ? "Update Employee" : "Create New Employee"}</h1>
+      <h1 className="title">
+        {update ? "Update Employee" : "Create New Employee"}
+      </h1>
       <Form method="post">
         <InputTextComponent
           text={text}
