@@ -42,6 +42,13 @@ export default function EmployeeFormComponent({ update }: any) {
           title="Date of Birth"
           onTextChange={(newText: string) => setDate(newText)}
         />
+        <InputTextComponent
+          text={date}
+          type="text"
+          title="Place of Birth"
+          hint="Enter Place of Birth"
+          onTextChange={(newText: string) => setDate(newText)}
+        />
         <button type="submit">Create Employee</button>
       </Form>
     </>
