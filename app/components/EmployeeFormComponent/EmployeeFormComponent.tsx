@@ -1,7 +1,7 @@
 import { Form } from "react-router";
 import "./EmployeeFormComponent.css";
 import InputTextComponent from "../InputTextComponent/InputTextComponent";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function EmployeeFormComponent({ update }: any) {
   const [text, setText] = useState("");
