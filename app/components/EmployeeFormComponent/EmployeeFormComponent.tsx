@@ -4,10 +4,11 @@ import InputTextComponent from "../InputTextComponent/InputTextComponent";
 import { useState } from "react";
 
 export default function EmployeeFormComponent({ update }: any) {
-  const [text, setText] = useState("");
+  const [full_name, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
-  const [date, setDate] = useState("");
+  const [date_of_birth, setDateOfBirth] = useState("");
+  const [place_of_birth, setPlaceOfBirth] = useState("");
 
   return (
     <>
@@ -16,11 +17,11 @@ export default function EmployeeFormComponent({ update }: any) {
       </h1>
       <Form method="post">
         <InputTextComponent
-          text={text}
+          text={full_name}
           type="text"
-          title="Name"
-          hint="Enter Name"
-          onTextChange={(newText: string) => setText(newText)}
+          title="Full Name"
+          hint="Enter Full Name"
+          onTextChange={(newText: string) => setFullName(newText)}
         />
         <InputTextComponent
           text={email}
@@ -37,17 +38,17 @@ export default function EmployeeFormComponent({ update }: any) {
           onTextChange={(newText: string) => setPhoneNumber(newText)}
         />
         <InputTextComponent
-          text={date}
+          text={date_of_birth}
           type="date"
           title="Date of Birth"
-          onTextChange={(newText: string) => setDate(newText)}
+          onTextChange={(newText: string) => setDateOfBirth(newText)}
         />
         <InputTextComponent
-          text={date}
+          text={place_of_birth}
           type="text"
           title="Place of Birth"
           hint="Enter Place of Birth"
-          onTextChange={(newText: string) => setDate(newText)}
+          onTextChange={(newText: string) => setPlaceOfBirth(newText)}
         />
         <button type="submit">Create Employee</button>
       </Form>
