@@ -94,7 +94,7 @@ export default function EmployeeFormComponent({ update }: any) {
           text={job_level}
           type="text"
           title="Enter Job Level"
-          hint="Junior"
+          hint="e.g Junior"
           onTextChange={(newText: string) => setJobLevel(newText)}
         />
         <ButtonComponent title="Create Employee" />
