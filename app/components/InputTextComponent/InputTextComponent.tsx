@@ -6,6 +6,7 @@ export default function InputTextComponent({
   title,
   type,
   hint,
+  name,
   onTextChange,
 }: any) {
   const [is_focused, setFocused] = useState(false);
@@ -20,6 +21,7 @@ export default function InputTextComponent({
       >
         <p>{hint}</p>
         <input
+          name={name}
           className="w-100 h-80"
           type={type}
           value={text}
