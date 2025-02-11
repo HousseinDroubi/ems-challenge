@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react";
 import "./PopupComponent.css";
 
-export default function PopupComponent({ text, is_visible }: any) {
+export default function PopupComponent({ text, is_popup_visible }: any) {
+  const [is_visibile, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(is_popup_visible);
+  }, [is_popup_visible]);
+
+  if (!is_visibile) {
+    return null;
+  }
   return (
     <div className="popup-container flex j-c-c a-i-c">
       <main className="flex flex-column">
@@ -13,10 +23,7 @@ export default function PopupComponent({ text, is_visible }: any) {
           </div>
         </header>
         <main className="flex j-c-c a-i-c">
-          <h4>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-            minima!
-          </h4>
+          <h4>{text}</h4>
         </main>
       </main>
     </div>
