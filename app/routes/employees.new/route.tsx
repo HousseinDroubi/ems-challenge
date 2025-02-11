@@ -32,13 +32,6 @@ export default function NewEmployeePage() {
       />
       <EmployeeFormComponent />
       <PopupComponent popup_data={popup_data} setPopupData={setPopupData} />
-      <button
-        onClick={() => {
-          setPopupData({ text: "Weird", is_visible: true });
-        }}
-      >
-        Click here
-      </button>
     </div>
   );
 }
