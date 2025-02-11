@@ -19,8 +19,8 @@ export default function TimesheetsPage() {
     <div>
       <NavBarComponent
         pages={[
-          { to: "/timesheets/new", title: "New Timesheet" },
           { to: "/employees", title: "Employees" },
+          { to: "/timesheets/new", title: "New Timesheet" },
         ]}
       />
       <div>
