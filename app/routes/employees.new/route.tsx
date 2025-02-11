@@ -105,6 +105,14 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function NewEmployeePage() {
+  const data = useActionData();
+  useEffect(() => {
+    if (data)
+      setPopupData({
+        is_visible: true,
+        text: data.error_message,
+      });
+  }, [data]);
   // ! Initial popup state
   const [popup_data, setPopupData] = useState({
     text: "",
