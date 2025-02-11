@@ -1,6 +1,7 @@
 import { Form, redirect, type ActionFunction } from "react-router";
 import EmployeeFormComponent from "~/components/EmployeeFormComponent/EmployeeFormComponent";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
+import PopupComponent from "~/components/PopupComponent/PopupComponent";
 import { getDB } from "~/db/getDB";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -23,6 +24,7 @@ export default function NewEmployeePage() {
         ]}
       />
       <EmployeeFormComponent />
+      <PopupComponent />
     </div>
   );
 }
