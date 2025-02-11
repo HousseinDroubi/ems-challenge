@@ -10,6 +10,7 @@ export default function EmployeeFormComponent({ update }: any) {
   const [phone_number, setPhoneNumber] = useState("");
   const [date_of_birth, setDateOfBirth] = useState("");
   const [place_of_birth, setPlaceOfBirth] = useState("");
+  const [job_title, setJobTitle] = useState("");
 
   return (
     <>
@@ -50,6 +51,13 @@ export default function EmployeeFormComponent({ update }: any) {
           title="Place of Birth"
           hint="Enter Place of Birth"
           onTextChange={(newText: string) => setPlaceOfBirth(newText)}
+        />
+        <InputTextComponent
+          text={job_title}
+          type="text"
+          title="Job Title"
+          hint="Enter Job Title"
+          onTextChange={(newText: string) => setJobTitle(newText)}
         />
         <ButtonComponent title="Create Employee" />
       </Form>
