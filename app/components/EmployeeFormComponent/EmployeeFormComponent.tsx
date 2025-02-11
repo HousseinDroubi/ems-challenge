@@ -11,7 +11,10 @@ export default function EmployeeFormComponent({ update }: any) {
   const [date_of_birth, setDateOfBirth] = useState("");
   const [place_of_birth, setPlaceOfBirth] = useState("");
   const [job_title, setJobTitle] = useState("");
-
+  const [department, setDepartment] = useState("");
+  const [salary, setSalary] = useState("");
+  const [start_date, setStartDate] = useState("");
+  const [end_date, setEndDate] = useState("");
   return (
     <>
       <h1 className="title">
@@ -58,6 +61,32 @@ export default function EmployeeFormComponent({ update }: any) {
           title="Job Title"
           hint="Enter Job Title"
           onTextChange={(newText: string) => setJobTitle(newText)}
+        />
+        <InputTextComponent
+          text={department}
+          type="text"
+          title="Department"
+          hint="Enter Department"
+          onTextChange={(newText: string) => setDepartment(newText)}
+        />
+        <InputTextComponent
+          text={salary}
+          type="text"
+          title="Salary"
+          hint="Enter Salary"
+          onTextChange={(newText: string) => setSalary(newText)}
+        />
+        <InputTextComponent
+          text={start_date}
+          type="date"
+          title="Start Date"
+          onTextChange={(newText: string) => setStartDate(newText)}
+        />
+        <InputTextComponent
+          text={end_date}
+          type="date"
+          title="End Date"
+          onTextChange={(newText: string) => setEndDate(newText)}
         />
         <ButtonComponent title="Create Employee" />
       </Form>
