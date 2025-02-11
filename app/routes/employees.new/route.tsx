@@ -46,6 +46,7 @@ export const action: ActionFunction = async ({ request }) => {
     return {
       error_message: "Phone number must contain exactly 8 digits",
     };
+    //Find if date of bieth is valid
   } else if (!isValidDate(String(date_of_birth))) {
     return {
       error_message: "Invalid date of birth!",
@@ -55,6 +56,7 @@ export const action: ActionFunction = async ({ request }) => {
     return {
       error_message: "Age must be greater than 18!",
     };
+    //Find if place of birth's number of characters is between 3 and 50
   } else if (
     String(place_of_birth).length < 3 ||
     String(place_of_birth).length > 50
@@ -62,40 +64,50 @@ export const action: ActionFunction = async ({ request }) => {
     return {
       error_message: "Place of birth characters must be between 3 and 50!",
     };
+    //Find if job title's number of characters is between 3 and 40
   } else if (String(job_title).length < 3 || String(job_title).length > 40) {
     return {
       error_message: "Job titlte characters must be between 3 and 40!",
     };
+    //Find if department's number of characters is between 3 and 50
   } else if (String(department).length < 2 || String(department).length > 40) {
     return {
       error_message: "Job department characters must be between 2 and 40!",
     };
+    //Find if salary is a number
   } else if (!isValidNumber(String(salary))) {
     return {
       error_message: "Salary can contain only numbers!",
     };
+    //Find if salary is a greater than or equal 650
   } else if (parseFloat(String(salary)) < 650) {
     return {
       error_message: "Salary canmust be above 650$!",
     };
+    //Find if start date is valid
   } else if (!isValidDate(String(start_date))) {
     return {
       error_message: "Invalid start date!",
     };
+    //Find if end date is valid
   } else if (!isValidDate(String(end_date))) {
     return {
       error_message: "Invalid end date!",
     };
+
+    //Find if end date is greater than start date
   } else if (
     !isEndDateGreaterThanStartDate(String(start_date), String(end_date))
   ) {
     return {
       error_message: "End date must be greater than start date!",
     };
+    //Find if job level's number of characters is between 3 and 40
   } else if (String(job_level).length < 3 || String(job_level).length > 40) {
     return {
       error_message: "Job level characters must be between 3 and 40!",
     };
+    //Send data to DB
   } else {
     const db = await getDB();
     await db.run(
@@ -114,13 +126,16 @@ export const action: ActionFunction = async ({ request }) => {
         job_level,
       ]
     );
-
+    // Redirect to employees
     return redirect("/employees");
   }
 };
 
 export default function NewEmployeePage() {
+  // Get action data
   const data = useActionData();
+
+  //! Show error message (if any)
   useEffect(() => {
     if (data)
       setPopupData({
