@@ -16,8 +16,11 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function NewEmployeePage() {
-  const [is_popup_visible, setIsPopupVisible] = useState(false);
-  const [popup_text, setPopupText] = useState("");
+  // ! Initial popup state
+  const [popup_data, setPopupData] = useState({
+    text: "",
+    is_visible: false,
+  });
 
   return (
     <div>
@@ -28,11 +31,14 @@ export default function NewEmployeePage() {
         ]}
       />
       <EmployeeFormComponent />
-      <PopupComponent
-        is_popup_visible={is_popup_visible}
-        setIsPopupVisible={setIsPopupVisible}
-        popup_text={popup_text}
-      />
+      <PopupComponent popup_data={popup_data} setPopupData={setPopupData} />
+      <button
+        onClick={() => {
+          setPopupData({ text: "Weird", is_visible: true });
+        }}
+      >
+        Click here
+      </button>
     </div>
   );
 }

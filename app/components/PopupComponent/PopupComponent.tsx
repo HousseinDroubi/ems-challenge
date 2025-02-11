@@ -1,12 +1,7 @@
-import { useEffect, useState } from "react";
 import "./PopupComponent.css";
 
-export default function PopupComponent({
-  popup_text,
-  is_popup_visible,
-  setIsPopupVisible,
-}: any) {
-  if (!is_popup_visible) {
+export default function PopupComponent({ popup_data, setPopupData }: any) {
+  if (!popup_data.is_visible) {
     return null;
   }
 
@@ -18,11 +13,15 @@ export default function PopupComponent({
             <h3>Attention</h3>
           </div>
           <div className="flex j-c-c a-i-c">
-            <button onClick={() => setIsPopupVisible(false)}>X</button>
+            <button
+              onClick={() => setPopupData({ ...popup_data, is_visible: false })}
+            >
+              X
+            </button>
           </div>
         </header>
         <main className="flex j-c-c a-i-c">
-          <h4>{popup_text}</h4>
+          <h4>{popup_data.text}</h4>
         </main>
       </main>
     </div>
