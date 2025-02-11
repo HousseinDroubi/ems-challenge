@@ -24,68 +24,68 @@ export default function EmployeeFormComponent({ update }: any) {
         <InputTextComponent
           text={full_name}
           type="text"
-          title="Full Name"
-          hint="Enter Full Name"
+          title="Enter Full Name"
+          hint="e.g. John Doe"
           onTextChange={(newText: string) => setFullName(newText)}
         />
         <InputTextComponent
           text={email}
           type="email"
-          title="Email"
-          hint="Enter Email"
+          title="Enter Email"
+          hint="e.g. john@example.com"
           onTextChange={(newText: string) => setEmail(newText)}
         />
         <InputTextComponent
           text={phone_number}
           type="tel"
-          title="Phone Number"
-          hint="Enter Phone Number"
+          title="Enter Phone Number"
+          hint="e.g. 01-123-456"
           onTextChange={(newText: string) => setPhoneNumber(newText)}
         />
         <InputTextComponent
           text={date_of_birth}
           type="date"
-          title="Date of Birth"
+          title="Enter Date of Birth"
           onTextChange={(newText: string) => setDateOfBirth(newText)}
         />
         <InputTextComponent
           text={place_of_birth}
           type="text"
-          title="Place of Birth"
-          hint="Enter Place of Birth"
+          title="Enter Place of Birth"
+          hint="e.g. Beqaa"
           onTextChange={(newText: string) => setPlaceOfBirth(newText)}
         />
         <InputTextComponent
           text={job_title}
           type="text"
-          title="Job Title"
-          hint="Enter Job Title"
+          title="Enter Job Title"
+          hint="e.g. Software Developer"
           onTextChange={(newText: string) => setJobTitle(newText)}
         />
         <InputTextComponent
           text={department}
           type="text"
-          title="Department"
-          hint="Enter Department"
+          title="Enter Department"
+          hint="e.g. IT"
           onTextChange={(newText: string) => setDepartment(newText)}
         />
         <InputTextComponent
           text={salary}
           type="text"
-          title="Salary"
-          hint="Enter Salary"
+          title="Enter Salary"
+          hint="e.g. 700"
           onTextChange={(newText: string) => setSalary(newText)}
         />
         <InputTextComponent
           text={start_date}
           type="date"
-          title="Start Date"
+          title="Enter Start Date"
           onTextChange={(newText: string) => setStartDate(newText)}
         />
         <InputTextComponent
           text={end_date}
           type="date"
-          title="End Date"
+          title="Enter End Date"
           onTextChange={(newText: string) => setEndDate(newText)}
         />
         <ButtonComponent title="Create Employee" />
