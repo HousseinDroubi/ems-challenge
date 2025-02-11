@@ -19,4 +19,14 @@ function is18OrOlder(dateString: string) {
   return age >= 18;
 }
 
-export { isValidDate, is18OrOlder };
+function isEndDateGreaterThanStartDate(
+  start_date_string: string,
+  end_date_string: string
+) {
+  const start_date = new Date(start_date_string);
+  const end_date = new Date(end_date_string);
+
+  return end_date > start_date;
+}
+
+export { isValidDate, is18OrOlder, isEndDateGreaterThanStartDate };
