@@ -23,7 +23,6 @@ export default function InputTextComponent({
           className="w-100 h-80"
           type={type}
           value={text}
-          required
           onChange={(e) => onTextChange(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={(event) => setFocused(event.target.value !== "")}
