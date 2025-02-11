@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import "./PopupComponent.css";
 
-export default function PopupComponent({ text, is_popup_visible }: any) {
-  const [is_visibile, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(is_popup_visible);
-  }, [is_popup_visible]);
-
-  if (!is_visibile) {
+export default function PopupComponent({
+  popup_text,
+  is_popup_visible,
+  setIsPopupVisible,
+}: any) {
+  if (!is_popup_visible) {
     return null;
   }
+
   return (
     <div className="popup-container flex j-c-c a-i-c">
       <main className="flex flex-column">
@@ -19,11 +18,11 @@ export default function PopupComponent({ text, is_popup_visible }: any) {
             <h3>Attention</h3>
           </div>
           <div className="flex j-c-c a-i-c">
-            <h3>X</h3>
+            <button onClick={() => setIsPopupVisible(false)}>X</button>
           </div>
         </header>
         <main className="flex j-c-c a-i-c">
-          <h4>{text}</h4>
+          <h4>{popup_text}</h4>
         </main>
       </main>
     </div>
