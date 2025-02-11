@@ -3,6 +3,11 @@ a {
   color: var(--light-gray);
 }
 
+.nav-bar h1 {
+  text-decoration: underline;
+  text-decoration-color: var(--primary);
+}
+
 .nav-bar a {
   margin-right: 14px;
   font-size: large;
