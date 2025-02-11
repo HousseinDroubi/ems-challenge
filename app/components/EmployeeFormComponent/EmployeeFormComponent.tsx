@@ -2,6 +2,7 @@ import { Form } from "react-router";
 import "./EmployeeFormComponent.css";
 import InputTextComponent from "../InputTextComponent/InputTextComponent";
 import { useState } from "react";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
 export default function EmployeeFormComponent({ update }: any) {
   const [full_name, setFullName] = useState("");
@@ -50,7 +51,7 @@ export default function EmployeeFormComponent({ update }: any) {
           hint="Enter Place of Birth"
           onTextChange={(newText: string) => setPlaceOfBirth(newText)}
         />
-        <button type="submit">Create Employee</button>
+        <ButtonComponent title="Create Employee" />
       </Form>
     </>
   );
