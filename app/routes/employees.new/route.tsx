@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Form, redirect, type ActionFunction } from "react-router";
 import EmployeeFormComponent from "~/components/EmployeeFormComponent/EmployeeFormComponent";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
@@ -15,6 +16,9 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function NewEmployeePage() {
+  const [is_popup_visible, setIsPopupVisible] = useState(false);
+  const [popup_text, setPopupText] = useState("");
+
   return (
     <div>
       <NavBarComponent
@@ -24,7 +28,11 @@ export default function NewEmployeePage() {
         ]}
       />
       <EmployeeFormComponent />
-      <PopupComponent />
+      <PopupComponent
+        is_popup_visible={is_popup_visible}
+        setIsPopupVisible={setIsPopupVisible}
+        popup_text={popup_text}
+      />
     </div>
   );
 }
