@@ -6,3 +6,16 @@ h1 {
   text-decoration: underline;
   text-decoration-color: var(--primary);
 }
+
+.form-files {
+  padding: 10px;
+}
+.form-files > div:first-child {
+  margin-left: 20px;
+  width: 220px;
+  height: 220px;
+  border-radius: 7px;
+  background-color: var(--light-gray);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+  gap: 5px;
+}

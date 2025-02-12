@@ -3,6 +3,7 @@ import "./EmployeeFormComponent.css";
 import InputTextComponent from "../InputTextComponent/InputTextComponent";
 import { useState } from "react";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
+import DropFileComponent from "../DropFileComponent/DropFileComponent";
 
 export default function EmployeeFormComponent({ update }: any) {
   const [full_name, setFullName] = useState("");
@@ -112,7 +113,13 @@ export default function EmployeeFormComponent({ update }: any) {
           <ButtonComponent title="Create Employee" />
         </Form>
       </section>
-      <section></section>
+      <section className="form-files">
+        <div>
+          {/*! TODO: Add image to div*/}
+          <img src="" alt="" />
+        </div>
+        <DropFileComponent />
+      </section>
     </section>
   );
 }
