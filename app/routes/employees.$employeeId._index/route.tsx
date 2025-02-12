@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useActionData } from "react-router";
+import { useActionData, useLoaderData } from "react-router";
 import EmployeeFormComponent from "~/components/EmployeeFormComponent/EmployeeFormComponent";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
@@ -25,7 +25,7 @@ export async function loader({ request }: any) {
 
 export default function EmployeePage() {
   const data = useActionData();
-
+  const { employee_with_files } = useLoaderData();
   //! Show error message (if any)
   useEffect(() => {
     if (data)
@@ -49,7 +49,7 @@ export default function EmployeePage() {
           { to: "/timesheets", title: "Timesheets" },
         ]}
       />
-      <EmployeeFormComponent />
+      <EmployeeFormComponent employee_data={employee_with_files} update />
       <PopupComponent popup_data={popup_data} setPopupData={setPopupData} />
     </div>
   );

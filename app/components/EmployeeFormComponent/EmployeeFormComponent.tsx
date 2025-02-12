@@ -7,7 +7,7 @@ import DropFileComponent from "../DropFileComponent/DropFileComponent";
 
 import ProfileIconImage from "../../assets/icons/profile_image.png";
 
-export default function EmployeeFormComponent({ update }: any) {
+export default function EmployeeFormComponent({ update, employee_data }: any) {
   const [full_name, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
