@@ -113,12 +113,14 @@ export default function EmployeeFormComponent({ update }: any) {
           <ButtonComponent title="Create Employee" />
         </Form>
       </section>
-      <section className="form-files">
-        <div>
-          {/*! TODO: Add image to div*/}
-          <img src="" alt="" />
+      <section className="form-files w-100">
+        <div className="flex form-image-container">
+          <div>
+            {/*! TODO: Add image to div*/}
+            <img src="" alt="" />
+          </div>
+          <DropFileComponent />
         </div>
-        <DropFileComponent />
       </section>
     </section>
   );

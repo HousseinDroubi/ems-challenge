@@ -10,10 +10,11 @@ h1 {
 .form-files {
   padding: 10px;
 }
-.form-files > div:first-child {
+
+.form-image-container > div:first-child {
   margin-left: 20px;
-  width: 220px;
-  height: 220px;
+  width: 250px;
+  height: 250px;
   border-radius: 7px;
   background-color: var(--light-gray);
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
