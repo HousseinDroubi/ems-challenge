@@ -131,20 +131,20 @@ export const action: ActionFunction = async ({ request }) => {
   } else {
     const db = await getDB();
 
-    const imageBuffer = await (image as File).arrayBuffer(); // Convert the file to an ArrayBuffer
-    const buffer = Buffer.from(imageBuffer);
+    const image_array_buffer = await (image as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const image_buffer = Buffer.from(image_array_buffer);
 
-    const idBuffer = await (id as File).arrayBuffer(); // Convert the file to an ArrayBuffer
-    const buffer2 = Buffer.from(idBuffer);
+    const id_array_buffer = await (id as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const id_buffer = Buffer.from(id_array_buffer);
 
-    const cvBuffer = await (cv as File).arrayBuffer(); // Convert the file to an ArrayBuffer
-    const buffer3 = Buffer.from(cvBuffer);
+    const cv_array_buffer = await (cv as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const cv_buffer = Buffer.from(cv_array_buffer);
 
-    const coverLetterBuffer = await (cv as File).arrayBuffer(); // Convert the file to an ArrayBuffer
-    const buffer4 = Buffer.from(coverLetterBuffer);
+    const cover_letter_array_buffer = await (cv as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const cover_letter_buffer = Buffer.from(cover_letter_array_buffer);
 
     await db.run(
-      "INSERT INTO employees (full_name,email,phone_number,date_of_birth,place_of_birth,job_title,department,salary,start_date,end_date,job_level,image,id_image,cv,cover_letter) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+      "INSERT INTO employees (full_name,email,phone_number,date_of_birth,place_of_birth,job_title,department,salary,start_date,end_date,job_level,face_image,id_image,cv_image,cover_letter_image) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
       [
         full_name,
         email,
@@ -157,10 +157,10 @@ export const action: ActionFunction = async ({ request }) => {
         start_date,
         end_date,
         job_level,
-        buffer,
-        buffer2,
-        buffer3,
-        buffer4,
+        image_buffer,
+        id_buffer,
+        cv_buffer,
+        cover_letter_buffer,
       ]
     );
 
