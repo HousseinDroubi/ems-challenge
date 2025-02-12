@@ -128,7 +128,6 @@ export default function EmployeeFormComponent({ update }: any) {
             hint="e.g Junior"
             onTextChange={(newText: string) => setJobLevel(newText)}
           />
-          <ButtonComponent title="Create Employee" />
         </section>
         <section className="form-files w-100">
           <div className="flex form-image-container">
@@ -162,6 +161,9 @@ export default function EmployeeFormComponent({ update }: any) {
           </div>
         </section>
       </section>
+      <div className="flex j-c-c">
+        <ButtonComponent title="Create Employee" />
+      </div>
     </Form>
   );
 }
