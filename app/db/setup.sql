@@ -29,10 +29,10 @@ CREATE TABLE employees (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     job_level TEXT NOT NULL,
-    image BLOB NOT NULL,
+    face_image BLOB NOT NULL,
     id_image BLOB NOT NULL,
-    cv BLOB NOT NULL,
-    cover_letter BLOB NOT NULL
+    cv_image BLOB NOT NULL,
+    cover_letter_image BLOB NOT NULL
 );
 
 -- Create timesheets table
