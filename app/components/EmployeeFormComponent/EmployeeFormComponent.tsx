@@ -20,7 +20,7 @@ export default function EmployeeFormComponent({ update }: any) {
   return (
     <section className="flex ">
       <section>
-        <h1 className="title">
+        <h1 className="form-title">
           {update ? "Update Employee" : "Create New Employee"}
         </h1>
         <Form method="post">
