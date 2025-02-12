@@ -144,7 +144,7 @@ export const action: ActionFunction = async ({ request }) => {
     const buffer4 = Buffer.from(coverLetterBuffer);
 
     await db.run(
-      "INSERT INTO employees (full_name,email,phone_number,date_of_birth,place_of_birth,job_title,department,salary,start_date,end_date,job_level,image,id,cv,cover_letter) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+      "INSERT INTO employees (full_name,email,phone_number,date_of_birth,place_of_birth,job_title,department,salary,start_date,end_date,job_level,image,id_image,cv,cover_letter) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
       [
         full_name,
         email,
