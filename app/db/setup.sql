@@ -32,7 +32,7 @@ CREATE TABLE employees (
     image BLOB NOT NULL,
     id BLOB NOT NULL,
     cv BLOB NOT NULL,
-    cover_letter BLOB NOT NULL,
+    cover_letter BLOB NOT NULL
 );
 
 -- Create timesheets table
