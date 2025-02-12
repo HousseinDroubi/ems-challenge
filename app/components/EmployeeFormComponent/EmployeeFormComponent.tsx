@@ -121,7 +121,11 @@ export default function EmployeeFormComponent({ update }: any) {
           <div className="flex j-c-c a-i-c">
             <img src={ProfileIconImage} alt="" width={100} height={100} />
           </div>
-          <DropFileComponent file_name="image" setFile={setImage} />
+          <DropFileComponent
+            file_name="image"
+            setFile={setImage}
+            file={image}
+          />
         </div>
       </section>
     </section>

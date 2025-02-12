@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./DropFileComponent.css";
 
-export default function DropFileComponent({ file_name, setFile }: any) {
+export default function DropFileComponent({ file_name, file, setFile }: any) {
   const [is_hovering, setIsHovering] = useState(false);
 
   return (
@@ -24,7 +24,7 @@ export default function DropFileComponent({ file_name, setFile }: any) {
           }
         }}
       >
-        <p>Drag and drop {file_name} here</p>
+        <p>Drag and drop or choose {file_name} here</p>
         <input
           type="file"
           accept="image/*"
