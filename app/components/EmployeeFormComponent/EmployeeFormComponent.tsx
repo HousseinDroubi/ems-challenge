@@ -37,12 +37,12 @@ export default function EmployeeFormComponent({ update }: any) {
     }
   }, [image]);
   return (
-    <section className="flex ">
-      <section>
-        <h1 className="form-title">
-          {update ? "Update Employee" : "Create New Employee"}
-        </h1>
-        <Form method="post">
+    <Form method="post">
+      <section className="flex ">
+        <section>
+          <h1 className="form-title">
+            {update ? "Update Employee" : "Create New Employee"}
+          </h1>
           <InputTextComponent
             text={full_name}
             name="full_name"
@@ -129,39 +129,39 @@ export default function EmployeeFormComponent({ update }: any) {
             onTextChange={(newText: string) => setJobLevel(newText)}
           />
           <ButtonComponent title="Create Employee" />
-        </Form>
-      </section>
-      <section className="form-files w-100">
-        <div className="flex form-image-container">
-          <div className="flex j-c-c a-i-c">
-            <img
-              className={!image ? "" : "w-100 h-100"}
-              src={!image ? ProfileIconImage : (image_to_show as string)}
-              alt=""
-              width={!image ? 100 : undefined}
-              height={!image ? 100 : undefined}
+        </section>
+        <section className="form-files w-100">
+          <div className="flex form-image-container">
+            <div className="flex j-c-c a-i-c">
+              <img
+                className={!image ? "" : "w-100 h-100"}
+                src={!image ? ProfileIconImage : (image_to_show as string)}
+                alt=""
+                width={!image ? 100 : undefined}
+                height={!image ? 100 : undefined}
+              />
+            </div>
+            <DropFileComponent
+              file_name="image"
+              setFile={setImage}
+              file={image}
             />
           </div>
-          <DropFileComponent
-            file_name="image"
-            setFile={setImage}
-            file={image}
-          />
-        </div>
-        <div className="mt-20 form-id-container">
-          <DropFileComponent file_name="ID" setFile={setID} file={ID} />
-        </div>
-        <div className="mt-20 form-cv-container">
-          <DropFileComponent file_name="CV" setFile={setCV} file={CV} />
-        </div>
-        <div className="mt-20 form-cover-letter-container">
-          <DropFileComponent
-            file_name="Cover letter"
-            setFile={setCoverLetter}
-            file={cover_letter}
-          />
-        </div>
+          <div className="mt-20 form-id-container">
+            <DropFileComponent file_name="ID" setFile={setID} file={ID} />
+          </div>
+          <div className="mt-20 form-cv-container">
+            <DropFileComponent file_name="CV" setFile={setCV} file={CV} />
+          </div>
+          <div className="mt-20 form-cover-letter-container">
+            <DropFileComponent
+              file_name="Cover letter"
+              setFile={setCoverLetter}
+              file={cover_letter}
+            />
+          </div>
+        </section>
       </section>
-    </section>
+    </Form>
   );
 }
