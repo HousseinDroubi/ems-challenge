@@ -9,7 +9,7 @@ export default function InputTextComponent({
   name,
   onTextChange,
 }: any) {
-  const [is_focused, setFocused] = useState(false);
+  const [is_focused, setFocused] = useState(text);
 
   return (
     <>
