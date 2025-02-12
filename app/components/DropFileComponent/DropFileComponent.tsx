@@ -31,6 +31,7 @@ export default function DropFileComponent({ file_name, file, setFile }: any) {
         <input
           type="file"
           accept="image/*"
+          name={file_name.toLowerCase().replaceAll(" ", "_")}
           id={file_name.toLowerCase().replaceAll(" ", "_")}
           onChange={(event) => {
             if (event.target.files?.[0]) {
