@@ -1,9 +1,15 @@
+import { useState } from "react";
 import "./DropFileComponent.css";
 
 export default function DropFileComponent({ file_name }: any) {
+  const [is_hovering, setIsHovering] = useState(false);
+
   return (
     <section className="flex-grow-1 drop-file-container">
-      <label htmlFor="input_file" className="h-100 flex j-c-c a-i-c">
+      <label
+        htmlFor="input_file"
+        className={`h-100 flex j-c-c a-i-c ${is_hovering ? "hover" : ""}`}
+      >
         <p>Drag and drop {file_name} here</p>
         <input type="file" accept="image/*" id="input_file" />
       </label>

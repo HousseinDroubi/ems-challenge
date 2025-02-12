@@ -17,6 +17,6 @@
   display: none;
 }
 
-.drop-file-container.hover {
+.drop-file-container label.hover {
   background: rgba(188, 65, 35, 0.1);
 }
