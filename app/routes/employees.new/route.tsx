@@ -109,6 +109,10 @@ export const action: ActionFunction = async ({ request }) => {
       error_message: "Job level characters must be between 3 and 40!",
     };
     //Send data to DB
+  } else if ((image as File).size == 0) {
+    return {
+      error_message: "Image required",
+    };
   } else {
     const db = await getDB();
 
