@@ -41,7 +41,9 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
   );
   const [image, setImage] = useState<null | File>(null);
   const [image_to_show, setImageToShow] = useState<string | ArrayBuffer | null>(
-    employee_data ? employee_data.face_image_base64 : null
+    employee_data
+      ? `data:image/jpeg;base64,${employee_data.face_image_base64}`
+      : null
   );
   const [CV, setCV] = useState<null | File>(null);
   const [ID, setID] = useState<null | File>(null);
@@ -153,11 +155,15 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
           <div className="flex form-image-container">
             <div className="flex j-c-c a-i-c">
               <img
-                className={!image ? "" : "w-100 h-100"}
-                src={!image ? ProfileIconImage : (image_to_show as string)}
+                className={!image && !image_to_show ? "" : "w-100 h-100"}
+                src={
+                  !image && !image_to_show
+                    ? ProfileIconImage
+                    : (image_to_show as string)
+                }
                 alt=""
-                width={!image ? 100 : undefined}
-                height={!image ? 100 : undefined}
+                width={!image && !image_to_show ? 100 : undefined}
+                height={!image && !image_to_show ? 100 : undefined}
               />
             </div>
             <DropFileComponent
