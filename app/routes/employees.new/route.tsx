@@ -29,6 +29,7 @@ export const action: ActionFunction = async ({ request }) => {
   const start_date = formData.get("start_date");
   const end_date = formData.get("end_date");
   const job_level = formData.get("job_level");
+  const image = formData.get("image");
 
   // * Validations
   if (String(full_name).length < 3 || String(full_name).length > 50) {
@@ -110,8 +111,12 @@ export const action: ActionFunction = async ({ request }) => {
     //Send data to DB
   } else {
     const db = await getDB();
+
+    const imageBuffer = await (image as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const buffer = Buffer.from(imageBuffer);
+
     await db.run(
-      "INSERT INTO employees (full_name,email,phone_number,date_of_birth,place_of_birth,job_title,department,salary,start_date,end_date,job_level) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+      "INSERT INTO employees (full_name,email,phone_number,date_of_birth,place_of_birth,job_title,department,salary,start_date,end_date,job_level,image) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
       [
         full_name,
         email,
@@ -124,8 +129,10 @@ export const action: ActionFunction = async ({ request }) => {
         start_date,
         end_date,
         job_level,
+        buffer,
       ]
     );
+
     // Redirect to employees
     return redirect("/employees");
   }
