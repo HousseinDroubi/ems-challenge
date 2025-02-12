@@ -7,7 +7,7 @@ export async function loader() {
   const arr = await db.all("SELECT * FROM employees;");
 
   const employees = arr.map((employee) => {
-    const base64Image = employee.image.toString("base64");
+    const base64Image = employee.face_image.toString("base64");
     return { ...employee, base64Image };
   });
 
