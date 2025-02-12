@@ -148,13 +148,13 @@ export default function EmployeeFormComponent({ update }: any) {
             file={image}
           />
         </div>
-        <div className="mt-10 form-id-container">
+        <div className="mt-20 form-id-container">
           <DropFileComponent file_name="ID" setFile={setID} file={ID} />
         </div>
-        <div className="mt-10 form-cv-container">
+        <div className="mt-20 form-cv-container">
           <DropFileComponent file_name="CV" setFile={setCV} file={CV} />
         </div>
-        <div className="mt-10 form-cover-letter-container">
+        <div className="mt-20 form-cover-letter-container">
           <DropFileComponent
             file_name="Cover letter"
             setFile={setCoverLetter}
