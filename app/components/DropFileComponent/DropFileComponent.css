@@ -9,8 +9,12 @@
   cursor: pointer;
 }
 
-.drop-file-container p {
+.drop-file-container > label > p:first-child {
   color: var(--primary);
+}
+
+.drop-file-container > label > p:nth-child(2) {
+  color: green;
 }
 
 .drop-file-container input {

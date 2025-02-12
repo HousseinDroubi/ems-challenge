@@ -8,7 +8,9 @@ export default function DropFileComponent({ file_name, file, setFile }: any) {
     <section className="flex-grow-1 drop-file-container">
       <label
         htmlFor="input_file"
-        className={`h-100 flex j-c-c a-i-c ${is_hovering ? "hover" : ""}`}
+        className={`h-100 flex flex-column j-c-c a-i-c ${
+          is_hovering ? "hover" : ""
+        }`}
         onDragOver={(event) => {
           event.preventDefault();
           setIsHovering(true);
@@ -25,6 +27,7 @@ export default function DropFileComponent({ file_name, file, setFile }: any) {
         }}
       >
         <p>Drag and drop or choose {file_name} here</p>
+        {file && <p>{file_name} added</p>}
         <input
           type="file"
           accept="image/*"
