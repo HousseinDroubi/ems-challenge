@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import "./DropFileComponent.css";
 import EyeIconImage from "../../assets/icons/eye.png";
 
-export default function DropFileComponent({ file_name, file, setFile }: any) {
+export default function DropFileComponent({
+  file_name,
+  file,
+  setFile,
+  can_view,
+}: any) {
   const [is_hovering, setIsHovering] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -39,14 +44,16 @@ export default function DropFileComponent({ file_name, file, setFile }: any) {
       >
         <p>Drag and drop or choose {file_name} here</p>
         {file && <p>{file_name} added</p>}
-        <img
-          src={EyeIconImage}
-          alt="eye_icon"
-          title={`View ${file_name}`}
-          onClick={(event) => {
-            event.preventDefault();
-          }}
-        />
+        {can_view && (
+          <img
+            src={EyeIconImage}
+            alt="eye_icon"
+            title={`View ${file_name}`}
+            onClick={(event) => {
+              event.preventDefault();
+            }}
+          />
+        )}
         <input
           ref={fileInputRef}
           type="file"
