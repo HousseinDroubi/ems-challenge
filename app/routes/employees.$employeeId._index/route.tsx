@@ -3,11 +3,24 @@ import { useActionData } from "react-router";
 import EmployeeFormComponent from "~/components/EmployeeFormComponent/EmployeeFormComponent";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
+import { getDB } from "~/db/getDB";
 
 export async function loader({ request }: any) {
   const url = new URL(request.url);
   const id = url.pathname.split("/").pop();
-  return {};
+  const db = await getDB();
+  const employee = await db.get(
+    `SELECT * FROM employees WHERE id = ${id} LIMIT 1;`
+  );
+  const employee_with_files = {
+    ...employee,
+    face_image_base64: employee.face_image.toString("base64"),
+    id_image_base64: employee.id_image.toString("base64"),
+    cv_image_base64: employee.cv_image.toString("base64"),
+    cover_letter_image_base64: employee.cover_letter_image.toString("base64"),
+  };
+
+  return { employee_with_files };
 }
 
 export default function EmployeePage() {
