@@ -8,20 +8,40 @@ import DropFileComponent from "../DropFileComponent/DropFileComponent";
 import ProfileIconImage from "../../assets/icons/profile_image.png";
 
 export default function EmployeeFormComponent({ update, employee_data }: any) {
-  const [full_name, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone_number, setPhoneNumber] = useState("");
-  const [date_of_birth, setDateOfBirth] = useState("");
-  const [place_of_birth, setPlaceOfBirth] = useState("");
-  const [job_title, setJobTitle] = useState("");
-  const [department, setDepartment] = useState("");
-  const [salary, setSalary] = useState("");
-  const [start_date, setStartDate] = useState("");
-  const [end_date, setEndDate] = useState("");
-  const [job_level, setJobLevel] = useState("");
+  const [full_name, setFullName] = useState(
+    employee_data ? employee_data.full_name : ""
+  );
+  const [email, setEmail] = useState(employee_data ? employee_data.email : "");
+  const [phone_number, setPhoneNumber] = useState(
+    employee_data ? employee_data.phone_number : ""
+  );
+  const [date_of_birth, setDateOfBirth] = useState(
+    employee_data ? employee_data.date_of_birth : ""
+  );
+  const [place_of_birth, setPlaceOfBirth] = useState(
+    employee_data ? employee_data.place_of_birth : ""
+  );
+  const [job_title, setJobTitle] = useState(
+    employee_data ? employee_data.job_title : ""
+  );
+  const [department, setDepartment] = useState(
+    employee_data ? employee_data.department : ""
+  );
+  const [salary, setSalary] = useState(
+    employee_data ? employee_data.salary : ""
+  );
+  const [start_date, setStartDate] = useState(
+    employee_data ? employee_data.start_date : ""
+  );
+  const [end_date, setEndDate] = useState(
+    employee_data ? employee_data.end_date : ""
+  );
+  const [job_level, setJobLevel] = useState(
+    employee_data ? employee_data.job_level : ""
+  );
   const [image, setImage] = useState<null | File>(null);
   const [image_to_show, setImageToShow] = useState<string | ArrayBuffer | null>(
-    null
+    employee_data ? employee_data.face_image_base64 : null
   );
   const [CV, setCV] = useState<null | File>(null);
   const [ID, setID] = useState<null | File>(null);
