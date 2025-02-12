@@ -7,6 +7,7 @@
   background: var(--light-gray);
   border-radius: 6px;
   cursor: pointer;
+  padding: 20px;
 }
 
 .drop-file-container > label > p:first-child {
