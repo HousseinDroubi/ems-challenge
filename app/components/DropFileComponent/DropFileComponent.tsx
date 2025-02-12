@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./DropFileComponent.css";
 
 export default function DropFileComponent({ file_name, file, setFile }: any) {
   const [is_hovering, setIsHovering] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleFile = (file: FileList) => {
+    if (fileInputRef.current) {
+      fileInputRef.current.files = file;
+      const changeEvent = new Event("change", { bubbles: true });
+      fileInputRef.current.dispatchEvent(changeEvent);
+    }
+  };
 
   return (
     <section className="flex-grow-1 drop-file-container h-100">
@@ -23,12 +32,14 @@ export default function DropFileComponent({ file_name, file, setFile }: any) {
           setIsHovering(false);
           if (event.dataTransfer.files.length > 0) {
             setFile(event.dataTransfer.files[0]);
+            handleFile(event.dataTransfer.files);
           }
         }}
       >
         <p>Drag and drop or choose {file_name} here</p>
         {file && <p>{file_name} added</p>}
         <input
+          ref={fileInputRef}
           type="file"
           accept="image/*"
           name={file_name.toLowerCase().replaceAll(" ", "_")}
