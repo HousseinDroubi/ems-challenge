@@ -4,7 +4,9 @@ import EmployeeFormComponent from "~/components/EmployeeFormComponent/EmployeeFo
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
 
-export async function loader() {
+export async function loader({ request }: any) {
+  const url = new URL(request.url);
+  const id = url.pathname.split("/").pop();
   return {};
 }
 
