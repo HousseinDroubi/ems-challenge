@@ -154,6 +154,13 @@ export default function EmployeeFormComponent({ update }: any) {
         <div className="mt-10 form-cv-container">
           <DropFileComponent file_name="CV" setFile={setCV} file={CV} />
         </div>
+        <div className="mt-10 form-cover-letter-container">
+          <DropFileComponent
+            file_name="Cover letter"
+            setFile={setCoverLetter}
+            file={cover_letter}
+          />
+        </div>
       </section>
     </section>
   );
