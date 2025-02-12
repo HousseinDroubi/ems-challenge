@@ -29,10 +29,10 @@ export const action: ActionFunction = async ({ request }) => {
   const start_date = formData.get("start_date");
   const end_date = formData.get("end_date");
   const job_level = formData.get("job_level");
-  const image = formData.get("image");
-  const id = formData.get("id");
-  const cv = formData.get("cv");
-  const cover_letter = formData.get("cover_letter");
+  const face_image = formData.get("image");
+  const id_image = formData.get("id");
+  const cv_image = formData.get("cv");
+  const cover_letter_image = formData.get("cover_letter");
 
   // * Validations
   if (String(full_name).length < 3 || String(full_name).length > 50) {
@@ -112,35 +112,37 @@ export const action: ActionFunction = async ({ request }) => {
       error_message: "Job level characters must be between 3 and 40!",
     };
     //Send data to DB
-  } else if ((image as File).size == 0) {
+  } else if ((face_image as File).size == 0) {
     return {
       error_message: "Image required",
     };
-  } else if ((id as File).size == 0) {
+  } else if ((id_image as File).size == 0) {
     return {
       error_message: "ID required",
     };
-  } else if ((cv as File).size == 0) {
+  } else if ((cv_image as File).size == 0) {
     return {
       error_message: "CV required",
     };
-  } else if ((cover_letter as File).size == 0) {
+  } else if ((cover_letter_image as File).size == 0) {
     return {
       error_message: "Cover Letter required",
     };
   } else {
     const db = await getDB();
 
-    const image_array_buffer = await (image as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const image_array_buffer = await (face_image as File).arrayBuffer();
     const image_buffer = Buffer.from(image_array_buffer);
 
-    const id_array_buffer = await (id as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const id_array_buffer = await (id_image as File).arrayBuffer();
     const id_buffer = Buffer.from(id_array_buffer);
 
-    const cv_array_buffer = await (cv as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const cv_array_buffer = await (cv_image as File).arrayBuffer();
     const cv_buffer = Buffer.from(cv_array_buffer);
 
-    const cover_letter_array_buffer = await (cv as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const cover_letter_array_buffer = await (
+      cover_letter_image as File
+    ).arrayBuffer();
     const cover_letter_buffer = Buffer.from(cover_letter_array_buffer);
 
     await db.run(
