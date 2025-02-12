@@ -3,6 +3,7 @@ import "./DropFileComponent.css";
 
 export default function DropFileComponent({ file_name }: any) {
   const [is_hovering, setIsHovering] = useState(false);
+  const [file, setFile] = useState<null | File>(null);
 
   return (
     <section className="flex-grow-1 drop-file-container">
@@ -19,10 +20,22 @@ export default function DropFileComponent({ file_name }: any) {
         onDrop={(event) => {
           event.preventDefault();
           setIsHovering(false);
+          if (event.dataTransfer.files.length > 0) {
+            setFile(event.dataTransfer.files[0]);
+          }
         }}
       >
         <p>Drag and drop {file_name} here</p>
-        <input type="file" accept="image/*" id="input_file" />
+        <input
+          type="file"
+          accept="image/*"
+          id="input_file"
+          onChange={(event) => {
+            if (event.target.files?.[0]) {
+              setFile(event.target.files[0]);
+            }
+          }}
+        />
       </label>
     </section>
   );
