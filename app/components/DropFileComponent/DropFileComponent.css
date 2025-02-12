@@ -1,6 +1,7 @@
 .drop-file-container {
   padding-left: 25px;
   padding-right: 25px;
+  position: relative;
 }
 
 .drop-file-container label {
@@ -8,6 +9,14 @@
   border-radius: 6px;
   cursor: pointer;
   padding: 20px;
+}
+
+.drop-file-container img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 30px;
+  bottom: 10px;
 }
 
 .drop-file-container > label > p:first-child {
