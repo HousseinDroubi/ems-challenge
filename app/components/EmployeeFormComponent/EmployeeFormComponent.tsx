@@ -37,7 +37,7 @@ export default function EmployeeFormComponent({ update }: any) {
     }
   }, [image]);
   return (
-    <Form method="post">
+    <Form method="post" encType="multipart/form-data">
       <section className="flex ">
         <section>
           <h1 className="form-title">
