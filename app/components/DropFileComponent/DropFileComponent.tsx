@@ -1,9 +1,8 @@
 import { useState } from "react";
 import "./DropFileComponent.css";
 
-export default function DropFileComponent({ file_name }: any) {
+export default function DropFileComponent({ file_name, setFile }: any) {
   const [is_hovering, setIsHovering] = useState(false);
-  const [file, setFile] = useState<null | File>(null);
 
   return (
     <section className="flex-grow-1 drop-file-container">

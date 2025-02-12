@@ -17,6 +17,7 @@ export default function EmployeeFormComponent({ update }: any) {
   const [start_date, setStartDate] = useState("");
   const [end_date, setEndDate] = useState("");
   const [job_level, setJobLevel] = useState("");
+  const [image, setImage] = useState<null | File>(null);
 
   return (
     <section className="flex ">
@@ -119,7 +120,7 @@ export default function EmployeeFormComponent({ update }: any) {
             {/*! TODO: Add image to div*/}
             <img src={undefined} alt="" />
           </div>
-          <DropFileComponent file_name="image" />
+          <DropFileComponent file_name="image" setFile={setImage} />
         </div>
       </section>
     </section>
