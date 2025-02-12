@@ -1,7 +1,7 @@
 import { Form } from "react-router";
 import "./EmployeeFormComponent.css";
 import InputTextComponent from "../InputTextComponent/InputTextComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import DropFileComponent from "../DropFileComponent/DropFileComponent";
 
@@ -20,7 +20,19 @@ export default function EmployeeFormComponent({ update }: any) {
   const [end_date, setEndDate] = useState("");
   const [job_level, setJobLevel] = useState("");
   const [image, setImage] = useState<null | File>(null);
+  const [image_to_show, setImageToShow] = useState<string | ArrayBuffer | null>(
+    null
+  );
 
+  useEffect(() => {
+    if (image) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageToShow(reader.result); // Set the image as a data URL
+      };
+      reader.readAsDataURL(image);
+    }
+  }, [image]);
   return (
     <section className="flex ">
       <section>
@@ -119,7 +131,13 @@ export default function EmployeeFormComponent({ update }: any) {
       <section className="form-files w-100">
         <div className="flex form-image-container">
           <div className="flex j-c-c a-i-c">
-            <img src={ProfileIconImage} alt="" width={100} height={100} />
+            <img
+              className={!image ? "" : "w-100 h-100"}
+              src={!image ? ProfileIconImage : (image_to_show as string)}
+              alt=""
+              width={!image ? 100 : undefined}
+              height={!image ? 100 : undefined}
+            />
           </div>
           <DropFileComponent
             file_name="image"
