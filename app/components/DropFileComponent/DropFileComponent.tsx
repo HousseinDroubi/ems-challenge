@@ -5,7 +5,7 @@ export default function DropFileComponent({ file_name, file, setFile }: any) {
   const [is_hovering, setIsHovering] = useState(false);
 
   return (
-    <section className="flex-grow-1 drop-file-container">
+    <section className="flex-grow-1 drop-file-container h-100">
       <label
         htmlFor="input_file"
         className={`h-100 flex flex-column j-c-c a-i-c ${
