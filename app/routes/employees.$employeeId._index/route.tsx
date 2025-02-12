@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useActionData } from "react-router";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
 
@@ -7,6 +8,17 @@ export async function loader() {
 }
 
 export default function EmployeePage() {
+  const data = useActionData();
+
+  //! Show error message (if any)
+  useEffect(() => {
+    if (data)
+      setPopupData({
+        is_visible: true,
+        text: data.error_message,
+      });
+  }, [data]);
+
   // ! Initial popup state
   const [popup_data, setPopupData] = useState({
     text: "",
