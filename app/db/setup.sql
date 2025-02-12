@@ -30,7 +30,7 @@ CREATE TABLE employees (
     end_date DATE NOT NULL,
     job_level TEXT NOT NULL,
     image BLOB NOT NULL,
-    id BLOB NOT NULL,
+    id_image BLOB NOT NULL,
     cv BLOB NOT NULL,
     cover_letter BLOB NOT NULL
 );
