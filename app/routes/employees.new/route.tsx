@@ -30,6 +30,9 @@ export const action: ActionFunction = async ({ request }) => {
   const end_date = formData.get("end_date");
   const job_level = formData.get("job_level");
   const image = formData.get("image");
+  const id = formData.get("id");
+  const cv = formData.get("cv");
+  const cover_letter = formData.get("cover_letter");
 
   // * Validations
   if (String(full_name).length < 3 || String(full_name).length > 50) {
@@ -113,14 +116,35 @@ export const action: ActionFunction = async ({ request }) => {
     return {
       error_message: "Image required",
     };
+  } else if ((id as File).size == 0) {
+    return {
+      error_message: "ID required",
+    };
+  } else if ((cv as File).size == 0) {
+    return {
+      error_message: "CV required",
+    };
+  } else if ((cover_letter as File).size == 0) {
+    return {
+      error_message: "Cover Letter required",
+    };
   } else {
     const db = await getDB();
 
     const imageBuffer = await (image as File).arrayBuffer(); // Convert the file to an ArrayBuffer
     const buffer = Buffer.from(imageBuffer);
 
+    const idBuffer = await (id as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const buffer2 = Buffer.from(idBuffer);
+
+    const cvBuffer = await (cv as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const buffer3 = Buffer.from(cvBuffer);
+
+    const coverLetterBuffer = await (cv as File).arrayBuffer(); // Convert the file to an ArrayBuffer
+    const buffer4 = Buffer.from(coverLetterBuffer);
+
     await db.run(
-      "INSERT INTO employees (full_name,email,phone_number,date_of_birth,place_of_birth,job_title,department,salary,start_date,end_date,job_level,image) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+      "INSERT INTO employees (full_name,email,phone_number,date_of_birth,place_of_birth,job_title,department,salary,start_date,end_date,job_level,image,id,cv,cover_letter) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
       [
         full_name,
         email,
@@ -134,6 +158,9 @@ export const action: ActionFunction = async ({ request }) => {
         end_date,
         job_level,
         buffer,
+        buffer2,
+        buffer3,
+        buffer4,
       ]
     );
 
