@@ -39,25 +39,44 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
   const [job_level, setJobLevel] = useState(
     employee_data ? employee_data.job_level : ""
   );
-  const [image, setImage] = useState<null | File>(null);
+  const [image, setImage] = useState<null | File | string>(
+    employee_data
+      ? `data:image/jpeg;base64,${employee_data.face_image_base64}`
+      : null
+  );
+
   const [image_to_show, setImageToShow] = useState<string | ArrayBuffer | null>(
     employee_data
       ? `data:image/jpeg;base64,${employee_data.face_image_base64}`
       : null
   );
-  const [CV, setCV] = useState<null | File>(null);
-  const [ID, setID] = useState<null | File>(null);
-  const [cover_letter, setCoverLetter] = useState<null | File>(null);
+
+  const [CV, setCV] = useState<null | File | string>(
+    employee_data
+      ? `data:image/jpeg;base64,${employee_data.cv_image_base64}`
+      : null
+  );
+  const [ID, setID] = useState<null | File | string>(
+    employee_data
+      ? `data:image/jpeg;base64,${employee_data.id_image_base64}`
+      : null
+  );
+  const [cover_letter, setCoverLetter] = useState<null | File | string>(
+    employee_data
+      ? `data:image/jpeg;base64,${employee_data.cover_letter_image_base64}`
+      : null
+  );
 
   useEffect(() => {
-    if (image) {
+    if (image && typeof image !== "string") {
       const reader = new FileReader();
       reader.onloadend = () => {
         setImageToShow(reader.result); // Set the image as a data URL
       };
-      reader.readAsDataURL(image);
+      reader.readAsDataURL(image as File);
     }
   }, [image]);
+
   return (
     <Form method="post" encType="multipart/form-data">
       <section className="flex ">
