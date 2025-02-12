@@ -23,6 +23,9 @@ export default function EmployeeFormComponent({ update }: any) {
   const [image_to_show, setImageToShow] = useState<string | ArrayBuffer | null>(
     null
   );
+  const [CV, setCV] = useState<null | File>(null);
+  const [ID, setID] = useState<null | File>(null);
+  const [cover_letter, setCoverLetter] = useState<null | File>(null);
 
   useEffect(() => {
     if (image) {
@@ -144,6 +147,12 @@ export default function EmployeeFormComponent({ update }: any) {
             setFile={setImage}
             file={image}
           />
+        </div>
+        <div className="mt-10 form-id-container">
+          <DropFileComponent file_name="ID" setFile={setID} file={ID} />
+        </div>
+        <div className="mt-10 form-cv-container">
+          <DropFileComponent file_name="CV" setFile={setCV} file={CV} />
         </div>
       </section>
     </section>

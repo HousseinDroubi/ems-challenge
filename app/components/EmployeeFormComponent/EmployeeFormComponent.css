@@ -14,9 +14,16 @@ h1 {
 .form-image-container > div:first-child {
   margin-left: 20px;
   width: 250px;
-  height: 250px;
   border-radius: 7px;
   background-color: var(--light-gray);
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
   gap: 5px;
+}
+.form-image-container {
+  height: 250px;
+}
+
+.form-id-container,
+.form-cv-container {
+  height: 200px;
 }
