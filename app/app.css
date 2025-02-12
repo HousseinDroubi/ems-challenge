@@ -63,3 +63,8 @@ ul {
 .mt-30 {
   margin-top: 30px;
 }
+
+/* Headings */
+h1 {
+  font-size: 1.5em;
+}
