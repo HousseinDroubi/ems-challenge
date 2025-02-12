@@ -7,7 +7,7 @@ export default function DropFileComponent({ file_name, file, setFile }: any) {
   return (
     <section className="flex-grow-1 drop-file-container h-100">
       <label
-        htmlFor="input_file"
+        htmlFor={file_name.toLowerCase().replaceAll(" ", "_")}
         className={`h-100 flex flex-column j-c-c a-i-c ${
           is_hovering ? "hover" : ""
         }`}
@@ -31,7 +31,7 @@ export default function DropFileComponent({ file_name, file, setFile }: any) {
         <input
           type="file"
           accept="image/*"
-          id="input_file"
+          id={file_name.toLowerCase().replaceAll(" ", "_")}
           onChange={(event) => {
             if (event.target.files?.[0]) {
               setFile(event.target.files[0]);
