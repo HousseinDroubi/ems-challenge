@@ -117,9 +117,9 @@ export default function EmployeeFormComponent({ update }: any) {
         <div className="flex form-image-container">
           <div>
             {/*! TODO: Add image to div*/}
-            <img src="" alt="" />
+            <img src={undefined} alt="" />
           </div>
-          <DropFileComponent />
+          <DropFileComponent file_name="image" />
         </div>
       </section>
     </section>

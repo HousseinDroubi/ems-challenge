@@ -1,0 +1,22 @@
+.drop-file-container {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.drop-file-container label {
+  background: var(--light-gray);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.drop-file-container p {
+  color: var(--primary);
+}
+
+.drop-file-container input {
+  display: none;
+}
+
+.drop-file-container.hover {
+  background: rgba(188, 65, 35, 0.1);
+}
