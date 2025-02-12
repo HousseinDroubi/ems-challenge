@@ -5,6 +5,8 @@ import { useState } from "react";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import DropFileComponent from "../DropFileComponent/DropFileComponent";
 
+import ProfileIconImage from "../../assets/icons/profile_image.png";
+
 export default function EmployeeFormComponent({ update }: any) {
   const [full_name, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -116,9 +118,8 @@ export default function EmployeeFormComponent({ update }: any) {
       </section>
       <section className="form-files w-100">
         <div className="flex form-image-container">
-          <div>
-            {/*! TODO: Add image to div*/}
-            <img src={undefined} alt="" />
+          <div className="flex j-c-c a-i-c">
+            <img src={ProfileIconImage} alt="" width={100} height={100} />
           </div>
           <DropFileComponent file_name="image" setFile={setImage} />
         </div>
