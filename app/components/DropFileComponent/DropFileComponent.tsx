@@ -19,6 +19,13 @@ export default function DropFileComponent({
     }
   };
 
+  const showFile = (event: any) => {
+    event.preventDefault();
+    const newWindow = window.open("", "_blank");
+    if (newWindow)
+      newWindow.document.write(`<img src="${file}" alt="Image" />`);
+  };
+
   return (
     <section className="flex-grow-1 drop-file-container h-100">
       <label
@@ -49,9 +56,7 @@ export default function DropFileComponent({
             src={EyeIconImage}
             alt="eye_icon"
             title={`View ${file_name}`}
-            onClick={(event) => {
-              event.preventDefault();
-            }}
+            onClick={showFile}
           />
         )}
         <input
