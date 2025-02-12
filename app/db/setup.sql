@@ -28,7 +28,8 @@ CREATE TABLE employees (
     salary INTEGER NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    job_level TEXT NOT NULL
+    job_level TEXT NOT NULL,
+    image BLOB NOT NULL
 );
 
 -- Create timesheets table
