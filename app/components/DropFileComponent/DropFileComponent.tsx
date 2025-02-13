@@ -60,7 +60,7 @@ export default function DropFileComponent({
           <img
             src={EyeIconImage}
             alt="eye_icon"
-            title={`View ${file_name}`}
+            title={`View Last ${file_name}`}
             onClick={showFile}
           />
         )}
