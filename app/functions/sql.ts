@@ -80,3 +80,5 @@ const getUpdateStatementQueryAndParams = async ({
   };
   return sql;
 };
+
+export { getUpdateStatementQueryAndParams };
