@@ -1,7 +1,9 @@
 import { useLoaderData } from "react-router";
+import EmployeeComponent from "~/components/EmployeeComponent/EmployeeComponent";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { getDB } from "~/db/getDB";
 import { convertToBase64 } from "~/functions/file";
+import "./route.css";
 
 export async function loader() {
   const db = await getDB();
@@ -23,19 +25,11 @@ export default function EmployeesPage() {
         ]}
       />
       <div>
-        {employees.map((employee: any) => (
-          <div key={employee.id}>
-            <ul>
-              <li>Employee #{employee.id}</li>
-              <ul>
-                <li>Full Name: {employee.full_name}</li>
-                <li>
-                  <img src={employee.image} alt={employee.full_name} />
-                </li>
-              </ul>
-            </ul>
-          </div>
-        ))}
+        <article className="employees-container flex w-100">
+          {employees.map((employee: any) => (
+            <EmployeeComponent employee={employee} key={employee.id} />
+          ))}
+        </article>
       </div>
     </div>
   );

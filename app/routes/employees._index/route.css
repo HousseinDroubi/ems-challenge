@@ -1,0 +1,5 @@
+.employees-container {
+  padding-top: 10px;
+  column-gap: 10px;
+  flex-wrap: wrap;
+}
