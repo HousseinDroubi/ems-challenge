@@ -10,4 +10,12 @@ const getBlobFromBuffer = (buffer: Buffer) => {
   return blob;
 };
 
-export { convertToBase64, getBlobFromBuffer };
+const getImageSrcFromBlob = (image: Blob): string | void => {
+  const reader = new FileReader();
+  reader.onloadend = () => {
+    if ((reader.result as string).split(",")[1] !== "") return reader.result; // Set the image as a data URL
+  };
+  reader.readAsDataURL(image);
+};
+
+export { convertToBase64, getBlobFromBuffer, getImageSrcFromBlob };
