@@ -36,34 +36,32 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
   const [job_level, setJobLevel] = useState(
     update ? employee_data.job_level : ""
   );
-  const [image, setImage] = useState<null | Blob>(
-    update ? getBlobFromBuffer(employee_data.face_image) : null
+  const [image, setImage] = useState<null | Buffer>(
+    update ? employee_data.face_image : null
   );
 
   const [image_to_show, setImageToShow] = useState<string | ArrayBuffer | null>(
     update ? employee_data.face_image_base64 : null
   );
 
-  const [CV, setCV] = useState<null | Blob>(
-    update ? getBlobFromBuffer(employee_data.cv_image) : null
+  const [CV, setCV] = useState<null | Buffer>(
+    update ? employee_data.cv_image : null
   );
-  const [ID, setID] = useState<null | Blob>(
-    update ? getBlobFromBuffer(employee_data.id_image) : null
+  const [ID, setID] = useState<null | Buffer>(
+    update ? employee_data.id_image : null
   );
-  const [cover_letter, setCoverLetter] = useState<null | Blob>(
-    update ? getBlobFromBuffer(employee_data.cover_letter_image) : null
+  const [cover_letter, setCoverLetter] = useState<null | Buffer>(
+    update ? employee_data.cover_letter_image : null
   );
 
-  useEffect(() => {
-    if (image) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        if ((reader.result as string).split(",")[1] !== "")
-          setImageToShow(reader.result); // Set the image as a data URL
-      };
-      reader.readAsDataURL(image);
-    }
-  }, [image]);
+  const updateFaceImage = (file: File) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if ((reader.result as string).split(",")[1] !== "")
+        setImageToShow(reader.result); // Set the image as a data URL
+    };
+    reader.readAsDataURL(file);
+  };
 
   return (
     <Form method="post" encType="multipart/form-data">
@@ -175,6 +173,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               file_name="image"
               setFile={setImage}
               file={image}
+              updateFaceImage={updateFaceImage}
             />
           </div>
           <div className="mt-20 form-id-container">
@@ -182,7 +181,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               file_name="ID"
               setFile={setID}
               file={ID}
-              file_image_base64={employee_data.id_image_base64}
+              file_image_base64={employee_data?.id_image_base64}
               can_view
             />
           </div>
@@ -191,7 +190,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               file_name="CV"
               setFile={setCV}
               file={CV}
-              file_image_base64={employee_data.cv_image_base64}
+              file_image_base64={employee_data?.cv_image_base64}
               can_view
             />
           </div>
@@ -200,7 +199,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               file_name="Cover letter"
               setFile={setCoverLetter}
               file={cover_letter}
-              file_image_base64={employee_data.cover_letter_image_base64}
+              file_image_base64={employee_data?.cover_letter_image_base64}
               can_view
             />
           </div>

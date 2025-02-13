@@ -35,8 +35,7 @@ export const action: ActionFunction = async ({ request }) => {
   const id_image = formData.get("id");
   const cv_image = formData.get("cv");
   const cover_letter_image = formData.get("cover_letter");
-  console.log(formData);
-  return;
+
   // * Validations
   if (String(full_name).length < 3 || String(full_name).length > 50) {
     return {
@@ -122,52 +121,55 @@ export const action: ActionFunction = async ({ request }) => {
 
   let image_buffer, id_buffer, cv_buffer, cover_letter_buffer;
 
-  const image_array_buffer = await (face_image as File).arrayBuffer();
-  image_buffer = Buffer.from(image_array_buffer);
+  const arr: any = [
+    full_name,
+    email,
+    phone_number,
+    date_of_birth,
+    place_of_birth,
+    job_title,
+    department,
+    salary,
+    start_date,
+    end_date,
+    job_level,
+  ];
 
-  const id_array_buffer = await (id_image as File).arrayBuffer();
-  id_buffer = Buffer.from(id_array_buffer);
-
-  const cv_array_buffer = await (cv_image as File).arrayBuffer();
-  cv_buffer = Buffer.from(cv_array_buffer);
-
-  const cover_letter_array_buffer = await (
-    cover_letter_image as File
-  ).arrayBuffer();
-  cover_letter_buffer = Buffer.from(cover_letter_array_buffer);
-
-  await db.run(
-    `UPDATE employees
+  if ((face_image as File).size !== 0) {
+    const image_array_buffer = await (face_image as File).arrayBuffer();
+    image_buffer = Buffer.from(image_array_buffer);
+    arr.push(image_buffer);
+  }
+  if ((id_image as File).size !== 0) {
+    const id_array_buffer = await (id_image as File).arrayBuffer();
+    id_buffer = Buffer.from(id_array_buffer);
+    arr.push(id_buffer);
+  }
+  if ((cv_image as File).size !== 0) {
+    const cv_array_buffer = await (cv_image as File).arrayBuffer();
+    cv_buffer = Buffer.from(cv_array_buffer);
+    arr.push(cv_buffer);
+  }
+  if ((cover_letter_image as File).size !== 0) {
+    const cover_letter_array_buffer = await (
+      cover_letter_image as File
+    ).arrayBuffer();
+    cover_letter_buffer = Buffer.from(cover_letter_array_buffer);
+    arr.push(cover_letter_buffer);
+  }
+  arr.push(id);
+  const sql = `UPDATE employees
       SET full_name = ?, email = ?,
       phone_number = ?, date_of_birth = ?,
       place_of_birth = ?, job_title = ?,
       department = ?, salary = ?,
       start_date = ?, end_date = ?,
-      job_level = ? , face_image = ?,
-      id_image = ?, cv_image = ?,
-      cover_letter_image = ?
-      
+      job_level = ?  ${image_buffer ? ",face_image = ?" : ""}
+      ${id_buffer ? ",id_image = ?" : ""}${cv_buffer ? ",cv_image = ?" : ""}
+      ${cover_letter_buffer ? ",cover_letter_image = ?" : ""}
       WHERE id = ?
-    `,
-    [
-      full_name,
-      email,
-      phone_number,
-      date_of_birth,
-      place_of_birth,
-      job_title,
-      department,
-      salary,
-      start_date,
-      end_date,
-      job_level,
-      id,
-      image_buffer,
-      id_buffer,
-      cv_buffer,
-      cover_letter_buffer,
-    ]
-  );
+    `;
+  const res = await db.run(sql, arr);
 
   return redirect("/employees");
 };

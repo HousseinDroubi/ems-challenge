@@ -7,11 +7,11 @@ export default function DropFileComponent({
   file,
   setFile,
   file_image_base64,
+  updateFaceImage,
   can_view,
 }: any) {
   const [is_hovering, setIsHovering] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-
   const handleFile = (file: FileList) => {
     if (fileInputRef.current) {
       fileInputRef.current.files = file;
@@ -49,6 +49,7 @@ export default function DropFileComponent({
           setIsHovering(false);
           if (event.dataTransfer.files.length > 0) {
             setFile(event.dataTransfer.files[0]);
+            if (!can_view) updateFaceImage(event.dataTransfer.files[0]);
             handleFile(event.dataTransfer.files);
           }
         }}
@@ -72,6 +73,7 @@ export default function DropFileComponent({
           onChange={(event) => {
             if (event.target.files?.[0]) {
               setFile(event.target.files[0]);
+              if (!can_view) updateFaceImage(event.target.files[0]);
             }
           }}
         />
