@@ -4,12 +4,7 @@ import { getDB } from "~/db/getDB";
 
 export async function loader() {
   const db = await getDB();
-  const arr = await db.all("SELECT * FROM employees;");
-
-  const employees = arr.map((employee) => {
-    const base64Image = employee.face_image.toString("base64");
-    return { ...employee, base64Image };
-  });
+  const employees = await db.all("SELECT * FROM employees;");
 
   return { employees };
 }
@@ -33,7 +28,7 @@ export default function EmployeesPage() {
                 <li>Full Name: {employee.full_name}</li>
                 <li>
                   <img
-                    src={`data:image/jpeg;base64,${employee.base64Image}`}
+                    src={convertToBase64(employee.face_image)}
                     alt={employee.full_name}
                   />
                 </li>
@@ -45,3 +40,7 @@ export default function EmployeesPage() {
     </div>
   );
 }
+
+const convertToBase64 = (face_image: any) => {
+  return `data:image/jpeg;base64,${face_image.toString("base64")}`;
+};
