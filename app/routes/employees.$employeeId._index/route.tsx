@@ -5,7 +5,7 @@ import {
   useLoaderData,
   type ActionFunction,
 } from "react-router";
-import type { ISqlite } from "sqlite";
+
 import EmployeeFormComponent from "~/components/EmployeeFormComponent/EmployeeFormComponent";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
@@ -17,7 +17,6 @@ import {
 } from "~/functions/date";
 import { convertToBase64 } from "~/functions/file";
 import { isValidNumber } from "~/functions/numbers";
-import { getUpdateStatementQueryAndParams } from "~/functions/sql";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
