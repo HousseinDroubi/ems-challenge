@@ -4,6 +4,7 @@ import { getDB } from "~/db/getDB";
 export async function loader() {
   const db = await getDB();
   const employees = await db.all("SELECT id, full_name FROM employees");
+  employees.unshift({ id: 0, full_name: "None" }); // Add none as default
   return { employees };
 }
 
@@ -27,6 +28,7 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function NewTimesheetPage() {
   const { employees } = useLoaderData(); // Used to create a select input
+  console.log(employees);
   return (
     <div>
       <NavBarComponent
