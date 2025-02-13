@@ -9,6 +9,7 @@ export default function DropFileComponent({
   file_image_base64,
   updateFaceImage,
   can_view,
+  update,
 }: any) {
   const [is_hovering, setIsHovering] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -19,7 +20,6 @@ export default function DropFileComponent({
       fileInputRef.current.dispatchEvent(changeEvent);
     }
   };
-
   const showFile = (event: any) => {
     event.preventDefault();
     const newWindow = window.open("", "_blank");
@@ -56,7 +56,7 @@ export default function DropFileComponent({
       >
         <p>Drag and drop or choose {file_name} here</p>
         {file && <p>{file_name} added</p>}
-        {can_view && (
+        {can_view && update && (
           <img
             src={EyeIconImage}
             alt="eye_icon"

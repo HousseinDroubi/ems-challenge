@@ -182,6 +182,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               file={ID}
               file_image_base64={employee_data?.id_image_base64}
               can_view
+              update={update}
             />
           </div>
           <div className="mt-20 form-cv-container">
@@ -191,6 +192,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               file={CV}
               file_image_base64={employee_data?.cv_image_base64}
               can_view
+              update={update}
             />
           </div>
           <div className="mt-20 form-cover-letter-container">
@@ -200,6 +202,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               file={cover_letter}
               file_image_base64={employee_data?.cover_letter_image_base64}
               can_view
+              update={update}
             />
           </div>
         </section>
