@@ -35,7 +35,8 @@ export const action: ActionFunction = async ({ request }) => {
   const id_image = formData.get("id");
   const cv_image = formData.get("cv");
   const cover_letter_image = formData.get("cover_letter");
-
+  console.log(formData);
+  return;
   // * Validations
   if (String(full_name).length < 3 || String(full_name).length > 50) {
     return {
