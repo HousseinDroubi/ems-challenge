@@ -30,10 +30,7 @@ export default function EmployeesPage() {
               <ul>
                 <li>Full Name: {employee.full_name}</li>
                 <li>
-                  <img
-                    src={convertToBase64(employee.face_image)}
-                    alt={employee.full_name}
-                  />
+                  <img src={employee.image} alt={employee.full_name} />
                 </li>
               </ul>
             </ul>
