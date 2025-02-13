@@ -24,14 +24,14 @@ export const action: ActionFunction = async ({ request }) => {
       error_message: "Please choose an employee",
     };
   }
+  console.log(start_time);
+  // const db = await getDB();
+  // await db.run(
+  //   "INSERT INTO timesheets (employee_id, start_time, end_time) VALUES (?, ?, ?)",
+  //   [employee_id, start_time, end_time]
+  // );
 
-  const db = await getDB();
-  await db.run(
-    "INSERT INTO timesheets (employee_id, start_time, end_time) VALUES (?, ?, ?)",
-    [employee_id, start_time, end_time]
-  );
-
-  return redirect("/timesheets");
+  // return redirect("/timesheets");
 };
 
 export default function NewTimesheetPage() {
