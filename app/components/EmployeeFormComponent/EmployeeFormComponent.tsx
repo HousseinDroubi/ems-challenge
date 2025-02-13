@@ -6,7 +6,6 @@ import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import DropFileComponent from "../DropFileComponent/DropFileComponent";
 
 import ProfileIconImage from "../../assets/icons/profile_image.png";
-import { getBlobFromBuffer } from "~/functions/file";
 
 export default function EmployeeFormComponent({ update, employee_data }: any) {
   const [full_name, setFullName] = useState(
