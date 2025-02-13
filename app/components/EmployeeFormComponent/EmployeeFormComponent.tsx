@@ -1,7 +1,7 @@
 import { Form } from "react-router";
 import "./EmployeeFormComponent.css";
 import InputTextComponent from "../InputTextComponent/InputTextComponent";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import DropFileComponent from "../DropFileComponent/DropFileComponent";
 
