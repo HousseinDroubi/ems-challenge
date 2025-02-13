@@ -15,6 +15,7 @@ import {
   isEndDateGreaterThanStartDate,
   isValidDate,
 } from "~/functions/date";
+import { convertToBase64 } from "~/functions/file";
 import { isValidNumber } from "~/functions/numbers";
 import { getUpdateStatementQueryAndParams } from "~/functions/sql";
 
@@ -180,10 +181,10 @@ export async function loader({ request }: any) {
   );
   const employee_with_files = {
     ...employee,
-    face_image_base64: employee.face_image.toString("base64"),
-    id_image_base64: employee.id_image.toString("base64"),
-    cv_image_base64: employee.cv_image.toString("base64"),
-    cover_letter_image_base64: employee.cover_letter_image.toString("base64"),
+    face_image_base64: convertToBase64(employee.face_image),
+    id_image_base64: convertToBase64(employee.id_image),
+    cv_image_base64: convertToBase64(employee.cv_image),
+    cover_letter_image_base64: convertToBase64(employee.cover_letter_image),
   };
 
   return { employee_with_files };

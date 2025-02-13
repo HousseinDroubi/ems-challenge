@@ -39,32 +39,22 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
   const [job_level, setJobLevel] = useState(
     employee_data ? employee_data.job_level : ""
   );
-  const [image, setImage] = useState<null | File | string>(
-    employee_data
-      ? `data:image/jpeg;base64,${employee_data.face_image_base64}`
-      : null
+  const [image, setImage] = useState<null | File>(
+    employee_data ? employee_data.face_image : null
   );
 
   const [image_to_show, setImageToShow] = useState<string | ArrayBuffer | null>(
-    employee_data
-      ? `data:image/jpeg;base64,${employee_data.face_image_base64}`
-      : null
+    employee_data ? employee_data.face_image_base64 : null
   );
 
-  const [CV, setCV] = useState<null | File | string>(
-    employee_data
-      ? `data:image/jpeg;base64,${employee_data.cv_image_base64}`
-      : null
+  const [CV, setCV] = useState<null | File>(
+    employee_data ? employee_data.cv_image : null
   );
-  const [ID, setID] = useState<null | File | string>(
-    employee_data
-      ? `data:image/jpeg;base64,${employee_data.id_image_base64}`
-      : null
+  const [ID, setID] = useState<null | File>(
+    employee_data ? employee_data.id_image : null
   );
   const [cover_letter, setCoverLetter] = useState<null | File | string>(
-    employee_data
-      ? `data:image/jpeg;base64,${employee_data.cover_letter_image_base64}`
-      : null
+    employee_data ? employee_data.cover_letter_image : null
   );
 
   useEffect(() => {
