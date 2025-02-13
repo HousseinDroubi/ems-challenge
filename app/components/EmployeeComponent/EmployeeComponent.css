@@ -1,0 +1,32 @@
+.employee-container {
+  width: 280px;
+  height: 430px;
+  background: var(--light-gray);
+  border-radius: 7px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+
+.employee-container:hover {
+  transform: scale(1.02);
+}
+
+.employee-container > img {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  height: 60%;
+}
+
+.employee-container > section {
+  padding-left: 6px;
+  padding-top: 6px;
+  flex-grow: 1;
+}
+
+.employee-container h3,
+.employee-container h4,
+.employee-container h5 {
+  color: var(--primary);
+}
