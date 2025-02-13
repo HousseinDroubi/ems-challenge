@@ -5,6 +5,7 @@ import {
   useLoaderData,
   type ActionFunction,
 } from "react-router";
+import type { ISqlite } from "sqlite";
 import EmployeeFormComponent from "~/components/EmployeeFormComponent/EmployeeFormComponent";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
@@ -117,25 +118,55 @@ export const action: ActionFunction = async ({ request }) => {
 
   const url = new URL(request.url);
   const id = url.pathname.split("/").pop();
-  const query = await getUpdateStatementQueryAndParams({
-    id,
-    full_name,
-    email,
-    phone_number,
-    date_of_birth,
-    place_of_birth,
-    job_title,
-    department,
-    salary,
-    start_date,
-    end_date,
-    job_level,
-    face_image,
-    id_image,
-    cv_image,
-    cover_letter_image,
-  });
-  db.run(query.statement, query.params);
+
+  let image_buffer, id_buffer, cv_buffer, cover_letter_buffer;
+
+  const image_array_buffer = await (face_image as File).arrayBuffer();
+  image_buffer = Buffer.from(image_array_buffer);
+
+  const id_array_buffer = await (id_image as File).arrayBuffer();
+  id_buffer = Buffer.from(id_array_buffer);
+
+  const cv_array_buffer = await (cv_image as File).arrayBuffer();
+  cv_buffer = Buffer.from(cv_array_buffer);
+
+  const cover_letter_array_buffer = await (
+    cover_letter_image as File
+  ).arrayBuffer();
+  cover_letter_buffer = Buffer.from(cover_letter_array_buffer);
+
+  await db.run(
+    `UPDATE employees
+      SET full_name = ?, email = ?,
+      phone_number = ?, date_of_birth = ?,
+      place_of_birth = ?, job_title = ?,
+      department = ?, salary = ?,
+      start_date = ?, end_date = ?,
+      job_level = ? , face_image = ?,
+      id_image = ?, cv_image = ?,
+      cover_letter_image = ?
+      
+      WHERE id = ?
+    `,
+    [
+      full_name,
+      email,
+      phone_number,
+      date_of_birth,
+      place_of_birth,
+      job_title,
+      department,
+      salary,
+      start_date,
+      end_date,
+      job_level,
+      id,
+      image_buffer,
+      id_buffer,
+      cv_buffer,
+      cover_letter_buffer,
+    ]
+  );
 
   return redirect("/employees");
 };
