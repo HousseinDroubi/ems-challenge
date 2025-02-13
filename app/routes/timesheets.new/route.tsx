@@ -19,6 +19,12 @@ export const action: ActionFunction = async ({ request }) => {
   const start_time = formData.get("start_time");
   const end_time = formData.get("end_time");
 
+  if (String(employee_id) === "0") {
+    return {
+      error_message: "Please choose an employee",
+    };
+  }
+
   const db = await getDB();
   await db.run(
     "INSERT INTO timesheets (employee_id, start_time, end_time) VALUES (?, ?, ?)",
