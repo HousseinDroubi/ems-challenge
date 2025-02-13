@@ -44,14 +44,14 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
     update ? employee_data.face_image_base64 : null
   );
 
-  const [CV, setCV] = useState<null | File>(
-    update ? employee_data.cv_image : null
+  const [CV, setCV] = useState<null | Blob>(
+    update ? getBlobFromBuffer(employee_data.cv_image) : null
   );
-  const [ID, setID] = useState<null | File>(
-    update ? employee_data.id_image : null
+  const [ID, setID] = useState<null | Blob>(
+    update ? getBlobFromBuffer(employee_data.id_image) : null
   );
-  const [cover_letter, setCoverLetter] = useState<null | File | string>(
-    update ? employee_data.cover_letter_image : null
+  const [cover_letter, setCoverLetter] = useState<null | Blob>(
+    update ? getBlobFromBuffer(employee_data.cover_letter_image) : null
   );
 
   useEffect(() => {
@@ -182,6 +182,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               file_name="ID"
               setFile={setID}
               file={ID}
+              file_image_base64={employee_data.id_image_base64}
               can_view
             />
           </div>
@@ -190,6 +191,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               file_name="CV"
               setFile={setCV}
               file={CV}
+              file_image_base64={employee_data.cv_image_base64}
               can_view
             />
           </div>
@@ -198,6 +200,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               file_name="Cover letter"
               setFile={setCoverLetter}
               file={cover_letter}
+              file_image_base64={employee_data.cover_letter_image_base64}
               can_view
             />
           </div>
