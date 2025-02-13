@@ -82,7 +82,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
       <section className="flex ">
         <section>
           <h1 className="form-title">
-            {update ? "Update Employee" : "Create New Employee"}
+            {update ? "Update Employee" : "Add New Employee"}
           </h1>
           <InputTextComponent
             text={full_name}
@@ -218,7 +218,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
         </section>
       </section>
       <div className="flex j-c-c">
-        <ButtonComponent title="Create Employee" />
+        <ButtonComponent title={update ? "Update Employee" : "Add Employee"} />
       </div>
     </Form>
   );
