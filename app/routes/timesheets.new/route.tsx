@@ -37,7 +37,17 @@ export default function NewTimesheetPage() {
       />
       <h1>Create New Timesheet</h1>
       <Form method="post">
-        <div>{/* Use employees to create a select input */}</div>
+        <div>
+          <label htmlFor="employees_input_section">
+            <select name="employee_id" id="employees_input_section">
+              {employees.map((employee: any) => (
+                <option value={employee.id} key={employee.id}>
+                  {employee.full_name}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
         <div>
           <label htmlFor="start_time">Start Time</label>
           <input
