@@ -4,9 +4,16 @@ import SalaryIcon from "../../assets/icons/salary.png";
 import CalendarIcon from "../../assets/icons/calendar.png";
 import LevelIcon from "../../assets/icons/level.png";
 import PhoneIcon from "../../assets/icons/phone.png";
+import { useNavigate } from "react-router";
+
 export default function EmployeeComponent({ employee }: any) {
+  const navigate = useNavigate();
+
   return (
-    <section className="flex flex-column employee-container w-100 mt-10">
+    <section
+      className="flex flex-column employee-container w-100 mt-10"
+      onClick={() => navigate(`/employees/${employee.id}`)}
+    >
       <img src={employee.image} alt="" />
       <section>
         <h3 className="text-align-center">
