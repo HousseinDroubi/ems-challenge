@@ -10,6 +10,8 @@ export async function loader() {
 
 import type { ActionFunction } from "react-router";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
+import { useState } from "react";
+import PopupComponent from "~/components/PopupComponent/PopupComponent";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -28,6 +30,13 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function NewTimesheetPage() {
   const { employees } = useLoaderData(); // Used to create a select input
+
+  // ! Initial popup state
+  const [popup_data, setPopupData] = useState({
+    text: "",
+    is_visible: false,
+  });
+
   console.log(employees);
   return (
     <div>
@@ -65,6 +74,7 @@ export default function NewTimesheetPage() {
         </div>
         <button type="submit">Create Timesheet</button>
       </Form>
+      <PopupComponent popup_data={popup_data} setPopupData={setPopupData} />
     </div>
   );
 }
