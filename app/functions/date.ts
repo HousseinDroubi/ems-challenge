@@ -3,9 +3,9 @@ function isValidDate(dateString: string) {
   return !isNaN(date.getTime());
 }
 
-function is18OrOlder(dateString: string) {
+const getAgeFromBirthDate = (birth_date: string): number => {
   const today = new Date();
-  const date = new Date(dateString);
+  const date = new Date(birth_date);
 
   let age = today.getFullYear() - date.getFullYear();
 
@@ -15,8 +15,11 @@ function is18OrOlder(dateString: string) {
   if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
     age--; // Decrease the age if birthday hasn't happened yet this year
   }
+  return age;
+};
 
-  return age >= 18;
+function is18OrOlder(dateString: string) {
+  return getAgeFromBirthDate(dateString) >= 18;
 }
 
 function isEndDateGreaterThanStartDate(
@@ -29,4 +32,9 @@ function isEndDateGreaterThanStartDate(
   return end_date > start_date;
 }
 
-export { isValidDate, is18OrOlder, isEndDateGreaterThanStartDate };
+export {
+  isValidDate,
+  is18OrOlder,
+  isEndDateGreaterThanStartDate,
+  getAgeFromBirthDate,
+};
