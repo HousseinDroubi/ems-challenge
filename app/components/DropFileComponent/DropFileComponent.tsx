@@ -6,6 +6,7 @@ export default function DropFileComponent({
   file_name,
   file,
   setFile,
+  file_image_base64,
   can_view,
 }: any) {
   const [is_hovering, setIsHovering] = useState(false);
@@ -22,8 +23,11 @@ export default function DropFileComponent({
   const showFile = (event: any) => {
     event.preventDefault();
     const newWindow = window.open("", "_blank");
-    if (newWindow)
-      newWindow.document.write(`<img src="${file}" alt="Image" />`);
+    if (newWindow) {
+      newWindow.document.write(
+        `<img src="${file_image_base64}" alt="Image" />`
+      );
+    }
   };
 
   return (
