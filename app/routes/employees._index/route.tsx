@@ -1,11 +1,14 @@
 import { useLoaderData } from "react-router";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { getDB } from "~/db/getDB";
+import { convertToBase64 } from "~/functions/file";
 
 export async function loader() {
   const db = await getDB();
-  const employees = await db.all("SELECT * FROM employees;");
-
+  const arr = await db.all("SELECT * FROM employees;");
+  const employees = arr.map((employee) => {
+    return { ...employee, image: convertToBase64(employee.face_image) };
+  });
   return { employees };
 }
 
@@ -40,7 +43,3 @@ export default function EmployeesPage() {
     </div>
   );
 }
-
-const convertToBase64 = (face_image: any) => {
-  return `data:image/jpeg;base64,${face_image.toString("base64")}`;
-};
