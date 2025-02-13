@@ -30,3 +30,13 @@
 .employee-container h5 {
   color: var(--primary);
 }
+.employee-container p strong {
+  color: var(--seconday);
+}
+.employee-component-salary img {
+  width: 20px;
+  height: 20px;
+}
+.employee-component-salary h4 {
+  margin-left: 10px;
+}

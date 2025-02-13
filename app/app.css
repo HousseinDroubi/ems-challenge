@@ -54,6 +54,10 @@ ul {
   flex-grow: 1;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
 /* Margins */
 .mt-5 {
   margin-top: 5px;
