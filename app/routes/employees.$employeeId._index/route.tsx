@@ -169,7 +169,7 @@ export const action: ActionFunction = async ({ request }) => {
       ${cover_letter_buffer ? ",cover_letter_image = ?" : ""}
       WHERE id = ?
     `;
-  const res = await db.run(sql, arr);
+  await db.run(sql, arr);
 
   return redirect("/employees");
 };
