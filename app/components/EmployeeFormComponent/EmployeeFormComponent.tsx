@@ -6,64 +6,62 @@ import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import DropFileComponent from "../DropFileComponent/DropFileComponent";
 
 import ProfileIconImage from "../../assets/icons/profile_image.png";
+import { getBlobFromBuffer } from "~/functions/file";
 
 export default function EmployeeFormComponent({ update, employee_data }: any) {
   const [full_name, setFullName] = useState(
-    employee_data ? employee_data.full_name : ""
+    update ? employee_data.full_name : ""
   );
   const [email, setEmail] = useState(employee_data ? employee_data.email : "");
   const [phone_number, setPhoneNumber] = useState(
-    employee_data ? employee_data.phone_number : ""
+    update ? employee_data.phone_number : ""
   );
   const [date_of_birth, setDateOfBirth] = useState(
-    employee_data ? employee_data.date_of_birth : ""
+    update ? employee_data.date_of_birth : ""
   );
   const [place_of_birth, setPlaceOfBirth] = useState(
-    employee_data ? employee_data.place_of_birth : ""
+    update ? employee_data.place_of_birth : ""
   );
   const [job_title, setJobTitle] = useState(
-    employee_data ? employee_data.job_title : ""
+    update ? employee_data.job_title : ""
   );
   const [department, setDepartment] = useState(
-    employee_data ? employee_data.department : ""
+    update ? employee_data.department : ""
   );
-  const [salary, setSalary] = useState(
-    employee_data ? employee_data.salary : ""
-  );
+  const [salary, setSalary] = useState(update ? employee_data.salary : "");
   const [start_date, setStartDate] = useState(
-    employee_data ? employee_data.start_date : ""
+    update ? employee_data.start_date : ""
   );
-  const [end_date, setEndDate] = useState(
-    employee_data ? employee_data.end_date : ""
-  );
+  const [end_date, setEndDate] = useState(update ? employee_data.end_date : "");
   const [job_level, setJobLevel] = useState(
-    employee_data ? employee_data.job_level : ""
+    update ? employee_data.job_level : ""
   );
-  const [image, setImage] = useState<null | File>(
-    employee_data ? employee_data.face_image : null
+  const [image, setImage] = useState<null | Blob>(
+    update ? getBlobFromBuffer(employee_data.face_image) : null
   );
 
   const [image_to_show, setImageToShow] = useState<string | ArrayBuffer | null>(
-    employee_data ? employee_data.face_image_base64 : null
+    update ? employee_data.face_image_base64 : null
   );
 
   const [CV, setCV] = useState<null | File>(
-    employee_data ? employee_data.cv_image : null
+    update ? employee_data.cv_image : null
   );
   const [ID, setID] = useState<null | File>(
-    employee_data ? employee_data.id_image : null
+    update ? employee_data.id_image : null
   );
   const [cover_letter, setCoverLetter] = useState<null | File | string>(
-    employee_data ? employee_data.cover_letter_image : null
+    update ? employee_data.cover_letter_image : null
   );
 
   useEffect(() => {
-    if (image && typeof image !== "string") {
+    if (image) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImageToShow(reader.result); // Set the image as a data URL
+        if ((reader.result as string).split(",")[1] !== "")
+          setImageToShow(reader.result); // Set the image as a data URL
       };
-      reader.readAsDataURL(image as File);
+      reader.readAsDataURL(image);
     }
   }, [image]);
 
@@ -166,9 +164,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
               <img
                 className={!image && !image_to_show ? "" : "w-100 h-100"}
                 src={
-                  !image && !image_to_show
-                    ? ProfileIconImage
-                    : (image_to_show as string)
+                  !image_to_show ? ProfileIconImage : (image_to_show as string)
                 }
                 alt=""
                 width={!image && !image_to_show ? 100 : undefined}
