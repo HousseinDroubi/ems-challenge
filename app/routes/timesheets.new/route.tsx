@@ -1,4 +1,4 @@
-import { useLoaderData, Form, redirect } from "react-router";
+import { useLoaderData, Form, redirect, useActionData } from "react-router";
 import { getDB } from "~/db/getDB";
 
 export async function loader() {
@@ -10,7 +10,7 @@ export async function loader() {
 
 import type { ActionFunction } from "react-router";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -30,6 +30,16 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function NewTimesheetPage() {
   const { employees } = useLoaderData(); // Used to create a select input
+  const data = useActionData();
+
+  //! Show error message (if any)
+  useEffect(() => {
+    if (data)
+      setPopupData({
+        is_visible: true,
+        text: data.error_message,
+      });
+  }, [data]);
 
   // ! Initial popup state
   const [popup_data, setPopupData] = useState({
