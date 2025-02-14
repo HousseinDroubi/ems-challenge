@@ -32,7 +32,9 @@ export default function TimesheetsPage() {
   const [search_bar_text, setSearchBarText] = useState("");
 
   const [employees_names, setEmployeesNames] = useState<any>([]);
+
   const [id, setId] = useState(0);
+
   useEffect(() => {
     const arr = [{ id: 0, full_name: "None" }];
     timesheetsAndEmployeesWithImages.forEach((element: any) => {
@@ -43,6 +45,7 @@ export default function TimesheetsPage() {
     });
     setEmployeesNames(arr);
   }, []);
+
   useEffect(() => {
     if (search_bar_text == "") {
       setFilteredTimesheetsAndEmployeesWithImages(
@@ -58,6 +61,7 @@ export default function TimesheetsPage() {
       setFilteredTimesheetsAndEmployeesWithImages(arr);
     }
   }, [search_bar_text]);
+
   return (
     <div>
       <NavBarComponent
