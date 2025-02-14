@@ -22,6 +22,7 @@ export default function TimesheetComponent({ timesheetAndEmployee }: any) {
         icon={TimeIcon}
         content={`End: ${timesheetAndEmployee.end_time.replace("T", " ")}`}
         alt="End"
+        additional_style={"rotate-180"}
       />
     </TableComponent>
   );
