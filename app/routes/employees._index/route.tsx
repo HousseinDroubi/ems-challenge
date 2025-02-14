@@ -171,7 +171,6 @@ export default function EmployeesPage() {
   useEffect(() => {
     if (filtered_times_and_employees_with_images.length !== 0) {
       setPaginatedItems(getPaginatedItems(current_page));
-      console.log(getPaginatedItems(current_page));
     }
   }, [filtered_times_and_employees_with_images]);
 
@@ -179,6 +178,23 @@ export default function EmployeesPage() {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return filtered_times_and_employees_with_images.slice(startIndex, endIndex);
+  };
+
+  function goToPreviousPage() {
+    if (current_page > 1) {
+      setCurrentPage(current_page - 1);
+      setPaginatedItems(getPaginatedItems(current_page - 1));
+    }
+  }
+  const goToNextPage = () => {
+    const totalPages = Math.ceil(
+      filtered_times_and_employees_with_images.length / itemsPerPage
+    );
+
+    if (current_page < totalPages) {
+      setCurrentPage(current_page + 1);
+      setPaginatedItems(getPaginatedItems(current_page + 1));
+    }
   };
 
   return (
@@ -254,10 +270,22 @@ export default function EmployeesPage() {
       <article className="pagination-container flex j-c-c mt-20">
         <section className="flex j-c-s-b">
           <div className="flex j-c-c a-i-c">
-            <img src={PaginationLeftIcon} alt="Go left" />
+            <img
+              src={PaginationLeftIcon}
+              alt="Go left"
+              onClick={() => {
+                goToPreviousPage();
+              }}
+            />
           </div>
           <div className="flex j-c-c a-i-c">
-            <img src={PaginationRightIcon} alt="Go Right" />
+            <img
+              src={PaginationRightIcon}
+              alt="Go Right"
+              onClick={() => {
+                goToNextPage();
+              }}
+            />
           </div>
         </section>
       </article>
