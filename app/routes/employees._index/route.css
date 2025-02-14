@@ -25,3 +25,20 @@
   margin-top: 0;
   margin-left: 20px;
 }
+
+.pagination-container section {
+  width: 80%;
+}
+
+.pagination-container div {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--light-gray);
+}
+
+.pagination-container img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
