@@ -7,6 +7,7 @@ export async function loader({ request }: any) {
   const timesheetAndEmployees = await db.all(
     `SELECT employees.id as _employee_id, employees.full_name, timesheets.* FROM employees,timesheets WHERE timesheets.id = ${id}`
   );
+  if (timesheetAndEmployees.length == 0) return { data: null };
   const data: any = {};
   // Get employees
   data.employees = timesheetAndEmployees.map((element) => {
