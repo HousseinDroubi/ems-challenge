@@ -5,6 +5,7 @@ import LevelIcon from "../../assets/icons/level.png";
 import PhoneIcon from "../../assets/icons/phone.png";
 import TableComponent from "../TableComponent/TableComponent";
 import "./EmployeeComponent.css";
+import TableDetailsComponent from "../TableDetailsComponent/TableDetailsComponent";
 
 export default function EmployeeComponent({ employee }: any) {
   return (
@@ -14,22 +15,26 @@ export default function EmployeeComponent({ employee }: any) {
       full_name={employee.full_name}
       is_employee
     >
-      <div className="flex a-i-c employee-component-salary">
-        <img src={SalaryIcon} alt="" />
-        <h4>Salary: {employee.salary}$</h4>
-      </div>
-      <div className="flex a-i-c employee-component-salary">
-        <img src={CalendarIcon} alt="" />
-        <h4>Age: {getAgeFromBirthDate(employee.date_of_birth)} years</h4>
-      </div>
-      <div className="flex a-i-c employee-component-salary">
-        <img src={LevelIcon} alt="" />
-        <h4>Level: {employee.job_level}</h4>
-      </div>
-      <div className="flex a-i-c employee-component-salary">
-        <img src={PhoneIcon} alt="" />
-        <h4>Phone Number: {employee.phone_number}</h4>
-      </div>
+      <TableDetailsComponent
+        icon={SalaryIcon}
+        content={`Salary: ${employee.salary}$`}
+        alt="Salary"
+      />
+      <TableDetailsComponent
+        icon={CalendarIcon}
+        content={`Age: ${getAgeFromBirthDate(employee.date_of_birth)} years`}
+        alt="Birth date"
+      />
+      <TableDetailsComponent
+        icon={LevelIcon}
+        content={`Level: ${employee.job_level}`}
+        alt="Job Level"
+      />
+      <TableDetailsComponent
+        icon={PhoneIcon}
+        content={`Phone Number: ${employee.phone_number}`}
+        alt="Phone Number"
+      />
     </TableComponent>
   );
 }
