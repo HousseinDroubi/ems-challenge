@@ -18,6 +18,7 @@ export default function SearchBarComponent({
         </div>
         <div className="h-100">
           <input
+            name="search_bar"
             placeholder={placeholder}
             value={search_bar_text}
             onChange={(e) => setSearchBarText(e.target.value)}

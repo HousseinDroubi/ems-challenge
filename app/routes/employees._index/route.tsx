@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { Form, useLoaderData } from "react-router";
 import EmployeeComponent from "~/components/EmployeeComponent/EmployeeComponent";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { getDB } from "~/db/getDB";
@@ -57,11 +57,13 @@ export default function EmployeesPage() {
         ]}
       />
       <div>
-        <SearchBarComponent
-          placeholder="Just type..."
-          search_bar_text={search_bar_text}
-          setSearchBarText={setSearchBarText}
-        />
+        <Form>
+          <SearchBarComponent
+            placeholder="Just type..."
+            search_bar_text={search_bar_text}
+            setSearchBarText={setSearchBarText}
+          />
+        </Form>
         <article className="employees-container flex w-100">
           {filtered_times_and_employees_with_images.map((employee: any) => (
             <EmployeeComponent employee={employee} key={employee.id} />
