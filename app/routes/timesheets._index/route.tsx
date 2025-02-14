@@ -15,7 +15,7 @@ export async function loader() {
 
 export default function TimesheetsPage() {
   const { timesheetsAndEmployees } = useLoaderData();
-
+  const [is_calendar, setIsCalendar] = useState(true);
   return (
     <div>
       <NavBarComponent
@@ -24,9 +24,29 @@ export default function TimesheetsPage() {
           { to: "/timesheets/new", title: "New Timesheet" },
         ]}
       />
-      <div>
-        <button>Table View</button>
-        <button>Calendar View</button>
+      <div className="flex">
+        <section className="choices">
+          <label htmlFor="calendar">Calendar</label>
+          <input
+            type="radio"
+            name="show_events"
+            checked={is_calendar}
+            onChange={() => {
+              setIsCalendar(true);
+            }}
+            id="calendar"
+          />
+          <label htmlFor="table">Table</label>
+          <input
+            checked={!is_calendar}
+            type="radio"
+            name="show_events"
+            onChange={() => {
+              setIsCalendar(false);
+            }}
+            id="table"
+          />
+        </section>
       </div>
       <article className="mt-20">
         {true ? (
