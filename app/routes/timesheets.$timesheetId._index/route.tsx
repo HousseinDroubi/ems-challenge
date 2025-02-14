@@ -1,7 +1,40 @@
-import { useLoaderData } from "react-router";
+import { redirect, useLoaderData, type ActionFunction } from "react-router";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import TimesheetFormComponent from "~/components/TimesheetFormComponent/TimesheetFormComponent";
 import { getDB } from "~/db/getDB";
+import { isEndDateGreaterThanStartDate, isValidDate } from "~/functions/date";
+
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+  const employee_id = formData.get("employee_id"); // <select /> input with name="employee_id"
+  const start_time = formData.get("start_time");
+  const end_time = formData.get("end_time");
+
+  if (String(employee_id) === "0") {
+    return {
+      error_message: "Please choose an employee",
+    };
+  } else if (!isValidDate(String(start_time))) {
+    return {
+      error_message: "Invalid start time",
+    };
+  } else if (!isValidDate(String(end_time))) {
+    return {
+      error_message: "Invalid start time",
+    };
+  } else if (
+    !isEndDateGreaterThanStartDate(String(start_time), String(end_time))
+  ) {
+    return {
+      error_message: "End time must be greater than start time",
+    };
+  } else {
+    // update request
+    console.log(formData);
+  }
+
+  return redirect("/timesheets");
+};
 
 export async function loader({ request }: any) {
   const id = request.url.split("/").pop();
