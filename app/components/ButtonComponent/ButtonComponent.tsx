@@ -1,8 +1,8 @@
 import "./ButtonComponent.css";
 
-export default function ButtonComponent({ title }: any) {
+export default function ButtonComponent({ title, name }: any) {
   return (
-    <button type="submit" className="button-submit mt-20">
+    <button type="submit" className="button-submit mt-20" name={name}>
       {title}
     </button>
   );
