@@ -226,7 +226,7 @@ export default function EmployeesPage() {
             </div>
           </section>
         </Form>
-        <article className="employees-container flex w-100 j-c-s-b">
+        <article className="employees-container flex w-100">
           {filtered_times_and_employees_with_images.map((employee: any) => (
             <EmployeeComponent employee={employee} key={employee.id} />
           ))}
