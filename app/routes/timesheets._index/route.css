@@ -15,3 +15,7 @@
   height: 20px;
   margin-left: 10px;
 }
+
+.timesheets-container {
+  flex-wrap: wrap;
+}

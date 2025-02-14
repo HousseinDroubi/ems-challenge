@@ -50,14 +50,18 @@ export default function TimesheetsPage() {
         </section>
       </div>
       <article className="mt-20">
-        {true ? (
+        {is_calendar ? (
           <div className="flex j-c-c a-i-c">
             <CalendarComponent
               timesheetsAndEmployees={timesheetsAndEmployees}
             />
           </div>
         ) : (
-          <></>
+          <article className="flex timesheets-container">
+            {timesheetsAndEmployees.map((event: any) => (
+              <></>
+            ))}
+          </article>
         )}
       </article>
     </div>
