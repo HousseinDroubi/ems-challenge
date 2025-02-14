@@ -4,7 +4,6 @@ import CalendarIcon from "../../assets/icons/calendar.png";
 import LevelIcon from "../../assets/icons/level.png";
 import PhoneIcon from "../../assets/icons/phone.png";
 import TableComponent from "../TableComponent/TableComponent";
-import "./EmployeeComponent.css";
 import TableDetailsComponent from "../TableDetailsComponent/TableDetailsComponent";
 
 export default function EmployeeComponent({ employee }: any) {
