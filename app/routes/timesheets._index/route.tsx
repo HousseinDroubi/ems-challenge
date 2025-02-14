@@ -62,6 +62,10 @@ export default function TimesheetsPage() {
     }
   }, [search_bar_text]);
 
+  useEffect(() => {
+    setSearchBarText(id == 0 ? "" : employees_names[id].full_name);
+  }, [id]);
+
   return (
     <div>
       <NavBarComponent
