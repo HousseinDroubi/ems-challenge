@@ -1,4 +1,4 @@
-.search-bar-container section {
+.search-bar-container section:first-child {
   width: 600px;
   max-width: 60vw;
   height: 55px;
@@ -10,18 +10,18 @@
   height: 30px;
 }
 
-.search-bar-container section div:first-child {
+.search-bar-container section:first-child div:first-child {
   flex-basis: 10%;
 }
 .search-bar-container img {
   cursor: pointer;
 }
 
-.search-bar-container section div:nth-child(3) {
+.search-bar-container section:first-child div:nth-child(3) {
   flex-grow: 1;
   padding: 7px;
 }
-.search-bar-container section div:nth-child(3) input {
+.search-bar-container section:first-child div:nth-child(3) input {
   height: inherit;
   outline: none;
   background: inherit;
@@ -31,6 +31,6 @@
   color: var(--secondary);
 }
 
-.search-bar-container section div:last-child {
+.search-bar-container section:first-child div:last-child {
   flex-basis: 10%;
 }
