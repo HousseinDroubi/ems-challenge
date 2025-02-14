@@ -4,7 +4,6 @@ import "./TimesheetComponent.css";
 import TableDetailsComponent from "../TableDetailsComponent/TableDetailsComponent";
 
 export default function TimesheetComponent({ timesheetAndEmployee }: any) {
-  console.log(timesheetAndEmployee);
   return (
     <TableComponent
       employee_id={timesheetAndEmployee.employee_id}
