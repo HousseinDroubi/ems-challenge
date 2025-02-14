@@ -79,6 +79,7 @@ export default function TimesheetFormComponent({
               placeholder="Enter summary"
               rows={30}
               cols={100}
+              defaultValue={timesheet.summary}
             ></textarea>
           )}
 
