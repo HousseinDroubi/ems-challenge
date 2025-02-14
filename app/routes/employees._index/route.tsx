@@ -13,6 +13,8 @@ import SearchBarComponent from "~/components/SearchBarComponent/SearchBarCompone
 import { useEffect, useState } from "react";
 import ButtonComponent from "~/components/ButtonComponent/ButtonComponent";
 import { getFilterByQuery, getOrderByQuery } from "~/functions/sql";
+import PaginationRightIcon from "~/assets/icons/pagination_right.png";
+import PaginationLeftIcon from "~/assets/icons/pagination_left.png";
 
 export async function loader() {
   const db = await getDB();
@@ -232,6 +234,16 @@ export default function EmployeesPage() {
           ))}
         </article>
       </div>
+      <article className="pagination-container flex j-c-c mt-20">
+        <section className="flex j-c-s-b">
+          <div className="flex j-c-c a-i-c">
+            <img src={PaginationLeftIcon} alt="Go left" />
+          </div>
+          <div className="flex j-c-c a-i-c">
+            <img src={PaginationRightIcon} alt="Go Right" />
+          </div>
+        </section>
+      </article>
     </div>
   );
 }
