@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router";
 import { useState } from "react";
 import { getDB } from "~/db/getDB";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
+import CalendarComponent from "~/components/CalendarComponent/CalendarComponent";
 
 export async function loader() {
   const db = await getDB();
@@ -30,7 +31,7 @@ export default function TimesheetsPage() {
       {/* Replace `true` by a variable that is changed when the view buttons are clicked */}
       {true ? (
         <div>
-          {timesheetsAndEmployees.map((timesheet: any) => (
+          {/* {timesheetsAndEmployees.map((timesheet: any) => (
             <div key={timesheet.id}>
               <ul>
                 <li>Timesheet #{timesheet.id}</li>
@@ -44,7 +45,8 @@ export default function TimesheetsPage() {
                 </ul>
               </ul>
             </div>
-          ))}
+          ))} */}
+          <CalendarComponent />
         </div>
       ) : (
         <div>
