@@ -48,7 +48,7 @@ export default function SearchBarComponent({ searchFor, placeholder }: any) {
         </div>
       </section>
       {is_hovering && (
-        <section className="search-bar-hint flex a-i-c j-c-s-e mt-5">
+        <section className="search-bar-hint flex a-i-c j-c-s-e mt-5 search-bar-container-hint">
           <div className="flex a-i-c">
             <p>Search</p>
             <img src={SearchIcon} alt="Search" />

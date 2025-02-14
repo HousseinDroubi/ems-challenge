@@ -39,15 +39,14 @@
   flex-basis: 10%;
 }
 
-.search-bar-container section:last-child {
+.search-bar-container-hint {
   width: 600px;
   max-width: 60vw;
   height: 75px;
   background: var(--light-gray);
   border-radius: 9px;
   background: rgba(229, 229, 229);
-  opacity: 1;
 }
-.search-bar-container section:last-child img {
+.search-bar-container-hint img {
   margin-left: 10px;
 }
