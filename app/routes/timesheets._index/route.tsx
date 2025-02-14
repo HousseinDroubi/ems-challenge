@@ -5,21 +5,28 @@ import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import CalendarComponent from "~/components/CalendarComponent/CalendarComponent";
 import "./route.css";
 import TimesheetComponent from "~/components/TimesheetComponent/TimesheetComponent";
+import { convertToBase64 } from "~/functions/file";
 
 export async function loader() {
   const db = await getDB();
   const timesheetsAndEmployees = await db.all(
-    "SELECT timesheets.*, employees.full_name, employees.id AS employee_id FROM timesheets JOIN employees ON timesheets.employee_id = employees.id"
+    "SELECT timesheets.*, employees.full_name, employees.id AS employee_id, employees.face_image FROM timesheets JOIN employees ON timesheets.employee_id = employees.id"
+  );
+  const timesheetsAndEmployeesWithImages = timesheetsAndEmployees.map(
+    (element) => {
+      return { ...element, image: convertToBase64(element.face_image) };
+    }
   );
 
-  return { timesheetsAndEmployees };
+  return { timesheetsAndEmployeesWithImages };
 }
 
 export default function TimesheetsPage() {
-  const { timesheetsAndEmployees } = useLoaderData();
-  const [filtered_times_and_employees, setTimesheetsAndEmployees] = useState(
-    timesheetsAndEmployees
-  );
+  const { timesheetsAndEmployeesWithImages } = useLoaderData();
+  const [
+    filtered_times_and_employees_with_images,
+    setTimesheetsAndEmployeesWithImages,
+  ] = useState(timesheetsAndEmployeesWithImages);
   const [is_calendar, setIsCalendar] = useState(true);
   return (
     <div>
@@ -57,17 +64,19 @@ export default function TimesheetsPage() {
         {is_calendar ? (
           <div className="flex j-c-c a-i-c">
             <CalendarComponent
-              timesheetsAndEmployees={timesheetsAndEmployees}
+              timesheetsAndEmployees={timesheetsAndEmployeesWithImages}
             />
           </div>
         ) : (
           <article className="flex timesheets-container">
-            {timesheetsAndEmployees.map((timesheetAndEmployee: any) => (
-              <TimesheetComponent
-                timesheetAndEmployee={timesheetAndEmployee}
-                key={timesheetAndEmployee.id}
-              />
-            ))}
+            {timesheetsAndEmployeesWithImages.map(
+              (timesheetAndEmployee: any) => (
+                <TimesheetComponent
+                  timesheetAndEmployee={timesheetAndEmployee}
+                  key={timesheetAndEmployee.id}
+                />
+              )
+            )}
           </article>
         )}
       </article>
