@@ -12,7 +12,7 @@ import "./route.css";
 import SearchBarComponent from "~/components/SearchBarComponent/SearchBarComponent";
 import { useEffect, useState } from "react";
 import ButtonComponent from "~/components/ButtonComponent/ButtonComponent";
-import { getOrderByQuery } from "~/functions/sql";
+import { getFilterByQuery, getOrderByQuery } from "~/functions/sql";
 
 export async function loader() {
   const db = await getDB();
@@ -27,18 +27,30 @@ export const action: ActionFunction = async ({ request }) => {
   const db = await getDB();
   const formData = await request.formData();
   let query = "";
+  let employees;
   if (formData.has("clicked_order_by")) {
     query = getOrderByQuery(
       String(formData.get("order_by")),
       String(formData.get("order")),
       String(formData.get("search_bar"))
     );
+    console.log(query);
     const arr = await db.all(query);
-    const employees = arr.map((employee) => {
+    employees = arr.map((employee) => {
       return { ...employee, image: convertToBase64(employee.face_image) };
     });
-    return { employees };
+  } else {
+    query = getFilterByQuery(
+      String(formData.get("filter_by")),
+      String(formData.get("filter")),
+      String(formData.get("search_bar"))
+    );
+    const arr = await db.all(query);
+    employees = arr.map((employee) => {
+      return { ...employee, image: convertToBase64(employee.face_image) };
+    });
   }
+  return { employees };
 };
 export default function EmployeesPage() {
   const [option_filter_by, setOptionFilterBy] = useState<any>("full_name");
