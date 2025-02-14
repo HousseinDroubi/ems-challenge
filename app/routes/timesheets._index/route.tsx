@@ -29,6 +29,9 @@ export default function TimesheetsPage() {
     setTimesheetsAndEmployeesWithImages,
   ] = useState(timesheetsAndEmployeesWithImages);
   const [is_calendar, setIsCalendar] = useState(true);
+  const searchForTimesheet = (text: string) => {
+    console.log(text);
+  };
   return (
     <div>
       <NavBarComponent
@@ -71,7 +74,10 @@ export default function TimesheetsPage() {
         ) : (
           <article className="flex timesheets-container">
             <section className="flex j-c-c w-100">
-              <SearchBarComponent />
+              <SearchBarComponent
+                placeholder={"Search for event"}
+                searchFor={searchForTimesheet}
+              />
             </section>
             {timesheetsAndEmployeesWithImages.map(
               (timesheetAndEmployee: any) => (

@@ -4,7 +4,7 @@ import CloseIcon from "~/assets/icons/exit.png";
 import EnterIcon from "~/assets/icons/enter.png";
 import { useEffect, useState } from "react";
 
-export default function SearchBarComponent() {
+export default function SearchBarComponent({ searchFor, placeholder }: any) {
   const [is_hovering, setIsHovering] = useState(false);
   const [text, setText] = useState("");
 
@@ -19,6 +19,7 @@ export default function SearchBarComponent() {
         </div>
         <div className="h-100">
           <input
+            placeholder={placeholder}
             value={text}
             onChange={(e) => setText(e.target.value)}
             type="text"
@@ -28,6 +29,11 @@ export default function SearchBarComponent() {
             }}
             onBlur={() => {
               setIsHovering(false);
+            }}
+            onKeyDown={(e) => {
+              if (e.key == "Enter") {
+                searchFor(text);
+              }
             }}
           />
         </div>
