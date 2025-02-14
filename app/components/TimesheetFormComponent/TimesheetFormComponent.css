@@ -1,6 +1,14 @@
+.timesheet-container h1 {
+  text-decoration: underline;
+  text-decoration-color: var(--primary);
+}
+
 .timesheet-container h1,
 .timesheet-container label {
   color: var(--light-gray);
+}
+
+.timesheet-container label {
   font-weight: 500;
 }
 .timesheet-container select {
@@ -25,4 +33,9 @@
   background: var(--light-gray);
   color: var(--primary);
   border-radius: 4px;
+}
+
+.timesheet-form input,
+.timesheet-form select {
+  padding: 3px;
 }
