@@ -78,7 +78,6 @@ export default function NewTimesheetPage() {
           { to: "/timesheets", title: "Timesheets" },
         ]}
       />
-      <h1 className="mt-20">Create New Timesheet</h1>
       <TimesheetComponent employees={employees} />
       <PopupComponent popup_data={popup_data} setPopupData={setPopupData} />
     </div>
