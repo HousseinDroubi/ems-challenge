@@ -19,9 +19,13 @@ export default function TimesheetFormComponent({
             <select
               name="employee_id"
               id="employees_input_section"
-              defaultValue={employees.findIndex(
-                (element: any) => element.id === timesheet.employee_id
-              )}
+              defaultValue={
+                update
+                  ? employees.findIndex(
+                      (element: any) => element.id === timesheet.employee_id
+                    )
+                  : undefined
+              }
             >
               {employees.map((employee: any) => (
                 <option value={employee.id} key={employee.id}>
@@ -34,7 +38,7 @@ export default function TimesheetFormComponent({
         <div className="mt-10">
           <label htmlFor="start_time">Start Time:</label>
           <input
-            defaultValue={timesheet.start_time}
+            defaultValue={update ? timesheet.start_time : undefined}
             type="datetime-local"
             name="start_time"
             id="start_time"
@@ -44,7 +48,7 @@ export default function TimesheetFormComponent({
         <div className="mt-10">
           <label htmlFor="end_time">End Time:</label>
           <input
-            defaultValue={timesheet.end_time}
+            defaultValue={update ? timesheet.end_time : undefined}
             type="datetime-local"
             name="end_time"
             id="end_time"
