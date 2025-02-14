@@ -2,7 +2,7 @@ import "./SearchBarComponent.css";
 import SearchIcon from "~/assets/icons/search.png";
 import CloseIcon from "~/assets/icons/exit.png";
 import EnterIcon from "~/assets/icons/enter.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function SearchBarComponent({ searchFor, placeholder }: any) {
   const [is_hovering, setIsHovering] = useState(false);
