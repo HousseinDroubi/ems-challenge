@@ -62,8 +62,11 @@ export default function TimesheetsPage() {
           </div>
         ) : (
           <article className="flex timesheets-container">
-            {timesheetsAndEmployees.map((event: any) => (
-              <TimesheetComponent timesheetAndEmployee={event} key={event.id} />
+            {timesheetsAndEmployees.map((timesheetAndEmployee: any) => (
+              <TimesheetComponent
+                timesheetAndEmployee={timesheetAndEmployee}
+                key={timesheetAndEmployee.id}
+              />
             ))}
           </article>
         )}
