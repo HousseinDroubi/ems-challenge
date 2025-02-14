@@ -68,21 +68,24 @@ export default function TimesheetFormComponent({
             required
           />
         </div>
-        <ButtonComponent
-          title={!update ? "Create Timesheet" : "Update Timesheet"}
-        />
-        <br />
-        {isNowBetweenStartTimeAndLastTime(
-          timesheet.start_time,
-          timesheet.end_time
-        ) &&
-          update && (
+        {update &&
+          isNowBetweenStartTimeAndLastTime(
+            timesheet.start_time,
+            timesheet.end_time
+          ) && (
             <textarea
               name="summary"
               className="mt-20"
               placeholder="Enter summary"
+              rows={30}
+              cols={100}
             ></textarea>
           )}
+
+        <br />
+        <ButtonComponent
+          title={!update ? "Create Timesheet" : "Update Timesheet"}
+        />
       </Form>
     </article>
   );

@@ -39,3 +39,11 @@
 .timesheet-form select {
   padding: 3px;
 }
+
+textarea {
+  border-radius: 6px;
+  background-color: var(--light-gray);
+  border: none;
+  padding: 6px;
+  outline: none;
+}
