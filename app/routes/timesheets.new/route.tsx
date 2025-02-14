@@ -1,4 +1,4 @@
-import { useLoaderData, Form, redirect, useActionData } from "react-router";
+import { useLoaderData, redirect, useActionData } from "react-router";
 import { getDB } from "~/db/getDB";
 
 export async function loader() {
@@ -13,7 +13,7 @@ import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { useEffect, useState } from "react";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
 import { isEndDateGreaterThanStartDate, isValidDate } from "~/functions/date";
-import ButtonComponent from "~/components/ButtonComponent/ButtonComponent";
+import TimesheetComponent from "~/components/TimesheetComponent/TimesheetComponent";
 import "./routes.css";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -79,33 +79,7 @@ export default function NewTimesheetPage() {
         ]}
       />
       <h1 className="mt-20">Create New Timesheet</h1>
-      <Form method="post" className="timesheet-form">
-        <div className="mt-10">
-          <label htmlFor="employees_input_section">
-            <select name="employee_id" id="employees_input_section">
-              {employees.map((employee: any) => (
-                <option value={employee.id} key={employee.id}>
-                  {employee.full_name}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        <div className="mt-10">
-          <label htmlFor="start_time">Start Time:</label>
-          <input
-            type="datetime-local"
-            name="start_time"
-            id="start_time"
-            required
-          />
-        </div>
-        <div className="mt-10">
-          <label htmlFor="end_time">End Time:</label>
-          <input type="datetime-local" name="end_time" id="end_time" required />
-        </div>
-        <ButtonComponent title="Create Timesheet" />
-      </Form>
+      <TimesheetComponent employees={employees} />
       <PopupComponent popup_data={popup_data} setPopupData={setPopupData} />
     </div>
   );
