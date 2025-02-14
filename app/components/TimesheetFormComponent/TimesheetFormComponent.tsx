@@ -48,6 +48,8 @@ export default function TimesheetFormComponent({
         <div className="mt-10">
           <label htmlFor="start_time">Start Time:</label>
           <input
+            readOnly
+            value={timesheet.start_time}
             type="datetime-local"
             name="start_time"
             id="start_time"
@@ -56,7 +58,14 @@ export default function TimesheetFormComponent({
         </div>
         <div className="mt-10">
           <label htmlFor="end_time">End Time:</label>
-          <input type="datetime-local" name="end_time" id="end_time" required />
+          <input
+            readOnly
+            value={timesheet.end_time}
+            type="datetime-local"
+            name="end_time"
+            id="end_time"
+            required
+          />
         </div>
         <ButtonComponent
           title={!update ? "Create Timesheet" : "Update Timesheet"}
