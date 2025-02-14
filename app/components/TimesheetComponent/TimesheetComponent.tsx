@@ -13,11 +13,11 @@ export default function TimesheetComponent({ timesheetAndEmployee }: any) {
     >
       <br />
       <div className="flex a-i-c timesheet-component-salary">
-        <img src={TimeIcon} alt="" />
+        <img src={TimeIcon} alt="Start" />
         <h4>Start: {timesheetAndEmployee.start_time.replace("T", " ")}</h4>
       </div>
       <div className="flex a-i-c timesheet-component-salary">
-        <img src={TimeIcon} alt="" />
+        <img src={TimeIcon} alt="End" />
         <h4>End: {timesheetAndEmployee.end_time.replace("T", " ")}</h4>
       </div>
     </TableComponent>
