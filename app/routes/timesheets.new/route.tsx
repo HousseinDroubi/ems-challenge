@@ -69,7 +69,6 @@ export default function NewTimesheetPage() {
     is_visible: false,
   });
   const createTimesheet = () => {};
-  console.log(employees);
   return (
     <div>
       <NavBarComponent
