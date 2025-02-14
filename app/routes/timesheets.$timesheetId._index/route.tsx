@@ -1,5 +1,12 @@
-import { redirect, useLoaderData, type ActionFunction } from "react-router";
+import { useEffect, useState } from "react";
+import {
+  redirect,
+  useActionData,
+  useLoaderData,
+  type ActionFunction,
+} from "react-router";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
+import PopupComponent from "~/components/PopupComponent/PopupComponent";
 import TimesheetFormComponent from "~/components/TimesheetFormComponent/TimesheetFormComponent";
 import { getDB } from "~/db/getDB";
 import { isEndDateGreaterThanStartDate, isValidDate } from "~/functions/date";
@@ -65,6 +72,23 @@ export async function loader({ request }: any) {
 }
 
 export default function TimesheetPage() {
+  // ! Initial popup state
+  const [popup_data, setPopupData] = useState({
+    text: "",
+    is_visible: false,
+  });
+
+  const action_data = useActionData();
+
+  //! Show error message (if any)
+  useEffect(() => {
+    if (action_data)
+      setPopupData({
+        is_visible: true,
+        text: action_data.error_message,
+      });
+  }, [action_data]);
+
   const { data } = useLoaderData();
   if (data == null) return <></>;
   return (
@@ -81,6 +105,7 @@ export default function TimesheetPage() {
         employees={data.employees}
         timesheet={data.timesheet}
       />
+      <PopupComponent popup_data={popup_data} setPopupData={setPopupData} />
     </div>
   );
 }
