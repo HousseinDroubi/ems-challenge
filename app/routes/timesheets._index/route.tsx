@@ -15,9 +15,7 @@ export async function loader() {
 
 export default function TimesheetsPage() {
   const { timesheetsAndEmployees } = useLoaderData();
-  // console.log(timesheetsAndEmployees);
-  // console.log(typeof timesheetsAndEmployees[0].start_time);
-  // console.log(timesheetsAndEmployees[0].start_time.replace("T", " "));
+
   return (
     <div>
       <NavBarComponent
