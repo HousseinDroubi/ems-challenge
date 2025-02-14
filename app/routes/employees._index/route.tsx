@@ -36,7 +36,7 @@ export const action: ActionFunction = async ({ request }) => {
       String(formData.get("order")),
       String(formData.get("search_bar"))
     );
-    console.log(query);
+
     const arr = await db.all(query);
     employees = arr.map((employee) => {
       return { ...employee, image: convertToBase64(employee.face_image) };
