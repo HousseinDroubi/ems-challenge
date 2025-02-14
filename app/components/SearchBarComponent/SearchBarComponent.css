@@ -1,0 +1,36 @@
+.search-bar-container section {
+  width: 600px;
+  max-width: 60vw;
+  height: 55px;
+  background: var(--light-gray);
+  border-radius: 9px;
+}
+.search-bar-container img {
+  width: 30px;
+  height: 30px;
+}
+
+.search-bar-container section div:first-child {
+  flex-basis: 10%;
+}
+.search-bar-container img {
+  cursor: pointer;
+}
+
+.search-bar-container section div:nth-child(3) {
+  flex-grow: 1;
+  padding: 7px;
+}
+.search-bar-container section div:nth-child(3) input {
+  height: inherit;
+  outline: none;
+  background: inherit;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.search-bar-container section div:last-child {
+  flex-basis: 10%;
+}

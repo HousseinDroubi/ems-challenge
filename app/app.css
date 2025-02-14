@@ -36,6 +36,10 @@ body {
   justify-content: space-between;
 }
 
+.j-c-s-e {
+  justify-content: space-evenly;
+}
+
 .w-100 {
   width: 100%;
 }
