@@ -1,2 +1,8 @@
-epxport defaconst TableDetailsComponent = () = > {
+.table-details-component-container img {
+  width: 20px;
+  height: 20px;
+}
+
+.table-details-component-container h4 {
+  margin-left: 10px;
 }
