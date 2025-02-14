@@ -1,3 +1,4 @@
+import { useLoaderData } from "react-router";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { getDB } from "~/db/getDB";
 
@@ -26,6 +27,8 @@ export async function loader({ request }: any) {
 }
 
 export default function TimesheetPage() {
+  const { data } = useLoaderData();
+  if (data != null) return <></>;
   return (
     <div>
       <NavBarComponent
