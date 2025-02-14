@@ -68,7 +68,6 @@ export default function NewTimesheetPage() {
     text: "",
     is_visible: false,
   });
-  const createTimesheet = () => {};
   return (
     <div>
       <NavBarComponent
@@ -103,9 +102,7 @@ export default function NewTimesheetPage() {
           <label htmlFor="end_time">End Time</label>
           <input type="datetime-local" name="end_time" id="end_time" required />
         </div>
-        <button type="submit" onClick={() => createTimesheet()}>
-          Create Timesheet
-        </button>
+        <button type="submit">Create Timesheet</button>
       </Form>
       <PopupComponent popup_data={popup_data} setPopupData={setPopupData} />
     </div>
