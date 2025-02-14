@@ -3,9 +3,8 @@ const convertToBase64 = (image: Buffer) => {
 };
 
 const getBlobFromBuffer = (buffer: Buffer) => {
-  const array = new Uint8Array(buffer); // Convert Buffer to Uint8Array
+  const array = new Uint8Array(buffer);
 
-  // Create a Blob from the array
   const blob = new Blob([array], { type: "image/jpeg" });
   return blob;
 };

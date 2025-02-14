@@ -121,7 +121,6 @@ export default function TimesheetsPage() {
                 id="employees_input_section"
                 value={id}
                 onChange={(e) => {
-                  console.log(e.target.value);
                   setId(parseInt(e.target.value));
                 }}
               >

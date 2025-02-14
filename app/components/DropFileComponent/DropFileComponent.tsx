@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./DropFileComponent.css";
 import EyeIconImage from "../../assets/icons/eye.png";
 

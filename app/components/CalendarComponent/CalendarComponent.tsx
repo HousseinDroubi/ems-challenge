@@ -20,7 +20,6 @@ export default function CalendarComponent({ timesheetsAndEmployees }: any) {
       createViewMonthGrid(),
       createViewMonthAgenda(),
     ],
-    // ! Mock Data
     events: timesheetsAndEmployees.map((timesheetWithEmployee: any) => {
       return {
         id: String(timesheetWithEmployee.id),

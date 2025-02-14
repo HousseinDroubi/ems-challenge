@@ -13,7 +13,7 @@ const getAgeFromBirthDate = (birth_date: string): number => {
   const dayDifference = today.getDate() - date.getDate();
 
   if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
-    age--; // Decrease the age if birthday hasn't happened yet this year
+    age--;
   }
   return age;
 };
@@ -43,10 +43,10 @@ const isNowBetweenStartTimeAndLastTime = (start_time: any, end_time: any) => {
 const getFormattedToday = () => {
   const today = new Date();
   const year = today.getFullYear();
-  let month: number | string = today.getMonth() + 1; // Months are 0-based, so add 1
+  let month: number | string = today.getMonth() + 1;
   let day: number | string = today.getDate();
-  month = month < 10 ? `0${month}` : String(month); // Convert to string
-  day = day < 10 ? `0${day}` : String(day); // Convert to string
+  month = month < 10 ? `0${month}` : String(month);
+  day = day < 10 ? `0${day}` : String(day);
   const formattedDate: string = `${year}-${month}-${day}`;
   return formattedDate;
 };

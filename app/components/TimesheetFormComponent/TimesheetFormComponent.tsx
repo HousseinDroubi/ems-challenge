@@ -1,7 +1,7 @@
-import { Form, Link, useLocation } from "react-router";
+import { Form, Link } from "react-router";
 import "./TimesheetFormComponent.css";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { isNowBetweenStartTimeAndLastTime } from "~/functions/date";
 
 export default function TimesheetFormComponent({
