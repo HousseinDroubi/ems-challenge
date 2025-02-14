@@ -1,3 +1,10 @@
+.search-bar-container {
+  position: relative;
+}
+.search-bar-container section {
+  transition: all 100ms ease-in-out;
+}
+
 .search-bar-container section:first-child {
   width: 600px;
   max-width: 60vw;
@@ -33,4 +40,17 @@
 
 .search-bar-container section:first-child div:last-child {
   flex-basis: 10%;
+}
+
+.search-bar-container section:last-child {
+  width: 600px;
+  max-width: 60vw;
+  height: 75px;
+  background: var(--light-gray);
+  border-radius: 9px;
+  background: rgba(229, 229, 229);
+  opacity: 1;
+}
+.search-bar-container section:last-child img {
+  margin-left: 10px;
 }

@@ -9,7 +9,7 @@ export default function SearchBarComponent() {
   const [text, setText] = useState("");
 
   return (
-    <article className="search-bar-container mt-20 flex j-c-c">
+    <article className="search-bar-container mt-20 flex flex-column a-i-c j-c-c">
       <section className="flex height-100">
         <div className="flex j-c-c a-i-c h-100">
           <img src={SearchIcon} alt="Search" />
@@ -41,6 +41,22 @@ export default function SearchBarComponent() {
           />
         </div>
       </section>
+      {is_hovering && (
+        <section className="search-bar-hint flex a-i-c j-c-s-e mt-5">
+          <div className="flex a-i-c">
+            <p>Search</p>
+            <img src={SearchIcon} alt="Search" />
+          </div>
+          <div className="flex a-i-c">
+            <p>Close</p>
+            <img src={CloseIcon} alt="Close" />
+          </div>
+          <div className="flex a-i-c">
+            <p>Enter</p>
+            <img src={EnterIcon} alt="Enter" />
+          </div>
+        </section>
+      )}
     </article>
   );
 }
