@@ -4,9 +4,12 @@ import CloseIcon from "~/assets/icons/exit.png";
 import EnterIcon from "~/assets/icons/enter.png";
 import { useState } from "react";
 
-export default function SearchBarComponent({ searchFor, placeholder }: any) {
+export default function SearchBarComponent({
+  placeholder,
+  search_bar_text,
+  setSearchBarText,
+}: any) {
   const [is_hovering, setIsHovering] = useState(false);
-  const [text, setText] = useState("");
 
   return (
     <article className="search-bar-container mt-20 flex flex-column a-i-c j-c-c">
@@ -20,8 +23,8 @@ export default function SearchBarComponent({ searchFor, placeholder }: any) {
         <div className="h-100">
           <input
             placeholder={placeholder}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={search_bar_text}
+            onChange={(e) => setSearchBarText(e.target.value)}
             type="text"
             className="w-100"
             onFocus={() => {
@@ -32,7 +35,7 @@ export default function SearchBarComponent({ searchFor, placeholder }: any) {
             }}
             onKeyDown={(e) => {
               if (e.key == "Enter") {
-                searchFor(text);
+                setSearchBarText(search_bar_text);
               }
             }}
           />
@@ -42,7 +45,7 @@ export default function SearchBarComponent({ searchFor, placeholder }: any) {
             src={CloseIcon}
             alt="Close"
             onClick={() => {
-              setText("");
+              setSearchBarText("");
             }}
           />
         </div>

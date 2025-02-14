@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getDB } from "~/db/getDB";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import CalendarComponent from "~/components/CalendarComponent/CalendarComponent";
@@ -26,11 +26,25 @@ export default function TimesheetsPage() {
   const { timesheetsAndEmployeesWithImages } = useLoaderData();
   const [
     filtered_times_and_employees_with_images,
-    setTimesheetsAndEmployeesWithImages,
-  ] = useState(timesheetsAndEmployeesWithImages);
+    setFilteredTimesheetsAndEmployeesWithImages,
+  ] = useState([]);
   const [is_calendar, setIsCalendar] = useState(true);
-  const searchForTimesheet = (text: string) => {};
-
+  const [search_bar_text, setSearchBarText] = useState("");
+  useEffect(() => {
+    if (search_bar_text == "") {
+      setFilteredTimesheetsAndEmployeesWithImages(
+        timesheetsAndEmployeesWithImages
+      );
+    } else {
+      const arr = timesheetsAndEmployeesWithImages.filter(
+        (timesheetAndEmployee: any) =>
+          timesheetAndEmployee.full_name
+            .toLowerCase()
+            .includes(search_bar_text.toLowerCase())
+      );
+      setFilteredTimesheetsAndEmployeesWithImages(arr);
+    }
+  }, [search_bar_text]);
   return (
     <div>
       <NavBarComponent
@@ -74,8 +88,9 @@ export default function TimesheetsPage() {
           <div className="flex flex-column">
             <section className="flex j-c-c w-100">
               <SearchBarComponent
-                searchFor={searchForTimesheet}
                 placeholder={"Search for timesheet"}
+                search_bar_text={search_bar_text}
+                setSearchBarText={setSearchBarText}
               />
             </section>
             <article className="flex timesheets-container mt-10">
