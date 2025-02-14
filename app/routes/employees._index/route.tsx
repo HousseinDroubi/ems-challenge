@@ -5,6 +5,7 @@ import { getDB } from "~/db/getDB";
 import { convertToBase64 } from "~/functions/file";
 import "./route.css";
 import SearchBarComponent from "~/components/SearchBarComponent/SearchBarComponent";
+import { useState } from "react";
 
 export async function loader() {
   const db = await getDB();
@@ -17,6 +18,7 @@ export async function loader() {
 
 export default function EmployeesPage() {
   const { employees } = useLoaderData();
+  const [search_bar_text, setSearchBarText] = useState("");
   return (
     <div>
       <NavBarComponent
@@ -26,7 +28,11 @@ export default function EmployeesPage() {
         ]}
       />
       <div>
-        <SearchBarComponent />
+        <SearchBarComponent
+          placeholder="Just type..."
+          search_bar_text={search_bar_text}
+          setSearchBarText={setSearchBarText}
+        />
         <article className="employees-container flex w-100">
           {employees.map((employee: any) => (
             <EmployeeComponent employee={employee} key={employee.id} />
