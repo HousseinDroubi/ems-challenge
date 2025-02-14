@@ -17,14 +17,14 @@ export default function CalendarComponent({ timesheetsAndEmployees }: any) {
       createViewMonthAgenda(),
     ],
     // ! Mock Data
-    events: [
-      {
-        id: 1,
-        title: "Title",
-        start: "2025-02-14 08:00",
-        end: "2025-02-14 10:00",
-      },
-    ],
+    events: timesheetsAndEmployees.map((timesheetWithEmployee: any) => {
+      return {
+        id: String(timesheetWithEmployee.id),
+        title: timesheetWithEmployee.full_name,
+        start: timesheetWithEmployee.start_time.replace("T", " "),
+        end: timesheetWithEmployee.end_time.replace("T", " "),
+      };
+    }),
     selectedDate: "2025-02-13",
   });
   return (
