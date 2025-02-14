@@ -28,7 +28,7 @@ export async function loader({ request }: any) {
 
 export default function TimesheetPage() {
   const { data } = useLoaderData();
-  if (data != null) return <></>;
+  if (data == null) return <></>;
   return (
     <div>
       <NavBarComponent
