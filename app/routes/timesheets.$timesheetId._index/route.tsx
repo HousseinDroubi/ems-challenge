@@ -8,8 +8,8 @@ export async function loader({ request }: any) {
     `SELECT employees.id as _employee_id, employees.full_name, timesheets.* FROM employees,timesheets WHERE timesheets.id = ${id}`
   );
   const data: any = {};
-  // Get users
-  data.users = timesheetAndEmployees.map((element) => {
+  // Get employees
+  data.employees = timesheetAndEmployees.map((element) => {
     return {
       id: element._employee_id,
       full_name: element.full_name,
