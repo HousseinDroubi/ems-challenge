@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
 import { isEndDateGreaterThanStartDate, isValidDate } from "~/functions/date";
 import ButtonComponent from "~/components/ButtonComponent/ButtonComponent";
+import "./routes.css";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -70,16 +71,16 @@ export default function NewTimesheetPage() {
     is_visible: false,
   });
   return (
-    <div>
+    <div className="timesheet-container">
       <NavBarComponent
         pages={[
           { to: "/employees", title: "Employees" },
           { to: "/timesheets", title: "Timesheets" },
         ]}
       />
-      <h1>Create New Timesheet</h1>
-      <Form method="post">
-        <div>
+      <h1 className="mt-20">Create New Timesheet</h1>
+      <Form method="post" className="timesheet-form">
+        <div className="mt-10">
           <label htmlFor="employees_input_section">
             <select name="employee_id" id="employees_input_section">
               {employees.map((employee: any) => (
@@ -90,8 +91,8 @@ export default function NewTimesheetPage() {
             </select>
           </label>
         </div>
-        <div>
-          <label htmlFor="start_time">Start Time</label>
+        <div className="mt-10">
+          <label htmlFor="start_time">Start Time:</label>
           <input
             type="datetime-local"
             name="start_time"
@@ -99,8 +100,8 @@ export default function NewTimesheetPage() {
             required
           />
         </div>
-        <div>
-          <label htmlFor="end_time">End Time</label>
+        <div className="mt-10">
+          <label htmlFor="end_time">End Time:</label>
           <input type="datetime-local" name="end_time" id="end_time" required />
         </div>
         <ButtonComponent title="Create Timesheet" />
