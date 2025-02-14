@@ -9,4 +9,3 @@
 *.sqlite
 
 .vscode
-/app/functions/temp.ts
