@@ -2,7 +2,7 @@ import { Form } from "react-router";
 import "./TimesheetFormComponent.css";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
-export default function TimesheetComponent({ employees, update }: any) {
+export default function TimesheetFormComponent({ employees, update }: any) {
   return (
     <article className="timesheet-container">
       <h1 className="mt-20">
