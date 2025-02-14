@@ -1,11 +1,21 @@
-import { createViewWeek, createViewMonthGrid } from "@schedule-x/calendar";
+import {
+  createViewWeek,
+  createViewMonthGrid,
+  createViewDay,
+  createViewMonthAgenda,
+} from "@schedule-x/calendar";
 import { ScheduleXCalendar, useCalendarApp } from "@schedule-x/react";
 import "@schedule-x/theme-default/dist/index.css";
 import "./CalendarComponent.css";
 
 export default function CalendarComponent() {
   const calendar = useCalendarApp({
-    views: [createViewWeek(), createViewMonthGrid()],
+    views: [
+      createViewDay(),
+      createViewWeek(),
+      createViewMonthGrid(),
+      createViewMonthAgenda(),
+    ],
     // ! Mock Data
     events: [
       {
