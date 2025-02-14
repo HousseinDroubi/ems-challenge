@@ -33,7 +33,9 @@ export default function TimesheetFormComponent({ employees, update }: any) {
           <label htmlFor="end_time">End Time:</label>
           <input type="datetime-local" name="end_time" id="end_time" required />
         </div>
-        <ButtonComponent title="Create Timesheet" />
+        <ButtonComponent
+          title={!update ? "Create Timesheet" : "Update Timesheet"}
+        />
       </Form>
     </article>
   );
