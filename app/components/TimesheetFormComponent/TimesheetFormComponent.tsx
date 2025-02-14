@@ -1,4 +1,4 @@
-import { Form } from "react-router";
+import { Form, Link } from "react-router";
 import "./TimesheetFormComponent.css";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import { useEffect, useState } from "react";
@@ -14,25 +14,28 @@ export default function TimesheetFormComponent({
         {!update ? "Create New Timesheet" : "Update Timesheet"}
       </h1>
       <Form method="post" className="timesheet-form">
-        <div className="mt-10">
+        <div className="mt-10 flex a-i-c">
           <label htmlFor="employees_input_section">
-            <select
-              name="employee_id"
-              id="employees_input_section"
-              defaultValue={
-                update
-                  ? employees.findIndex(
-                      (element: any) => element.id === timesheet.employee_id
-                    )
-                  : undefined
-              }
-            >
-              {employees.map((employee: any) => (
-                <option value={employee.id} key={employee.id}>
-                  {employee.full_name}
-                </option>
-              ))}
-            </select>
+            <section>
+              <select
+                name="employee_id"
+                id="employees_input_section"
+                defaultValue={
+                  update
+                    ? employees.findIndex(
+                        (element: any) => element.id === timesheet.employee_id
+                      )
+                    : undefined
+                }
+              >
+                {employees.map((employee: any) => (
+                  <option value={employee.id} key={employee.id}>
+                    {employee.full_name}
+                  </option>
+                ))}
+              </select>
+              <Link to={"page.to"}>{"View Employee"}</Link>
+            </section>
           </label>
         </div>
         <div className="mt-10">
