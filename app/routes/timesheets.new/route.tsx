@@ -13,6 +13,7 @@ import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { useEffect, useState } from "react";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
 import { isEndDateGreaterThanStartDate, isValidDate } from "~/functions/date";
+import ButtonComponent from "~/components/ButtonComponent/ButtonComponent";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -102,7 +103,7 @@ export default function NewTimesheetPage() {
           <label htmlFor="end_time">End Time</label>
           <input type="datetime-local" name="end_time" id="end_time" required />
         </div>
-        <button type="submit">Create Timesheet</button>
+        <ButtonComponent title="Create Timesheet" />
       </Form>
       <PopupComponent popup_data={popup_data} setPopupData={setPopupData} />
     </div>
