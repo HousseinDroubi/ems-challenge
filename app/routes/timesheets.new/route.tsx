@@ -13,7 +13,7 @@ import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { useEffect, useState } from "react";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
 import { isEndDateGreaterThanStartDate, isValidDate } from "~/functions/date";
-import TimesheetComponent from "~/components/TimesheetComponent/TimesheetComponent";
+import TimesheetComponent from "~/components/TimesheetFormComponent/TimesheetFormComponent";
 import "./routes.css";
 
 export const action: ActionFunction = async ({ request }) => {
