@@ -1,8 +1,5 @@
-.search-bar-container {
-  position: relative;
-}
 .search-bar-container section {
-  transition: all 100ms ease-in-out;
+  transition: all 260ms ease-in-out;
 }
 
 .search-bar-container section:first-child {
