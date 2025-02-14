@@ -4,6 +4,7 @@ import { getDB } from "~/db/getDB";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import CalendarComponent from "~/components/CalendarComponent/CalendarComponent";
 import "./route.css";
+import TimesheetComponent from "~/components/TimesheetComponent/TimesheetComponent";
 
 export async function loader() {
   const db = await getDB();
@@ -16,6 +17,9 @@ export async function loader() {
 
 export default function TimesheetsPage() {
   const { timesheetsAndEmployees } = useLoaderData();
+  const [filtered_times_and_employees, setTimesheetsAndEmployees] = useState(
+    timesheetsAndEmployees
+  );
   const [is_calendar, setIsCalendar] = useState(true);
   return (
     <div>
@@ -59,7 +63,7 @@ export default function TimesheetsPage() {
         ) : (
           <article className="flex timesheets-container">
             {timesheetsAndEmployees.map((event: any) => (
-              <></>
+              <TimesheetComponent timesheetAndEmployee={event} key={event.id} />
             ))}
           </article>
         )}
