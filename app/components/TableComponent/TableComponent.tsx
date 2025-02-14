@@ -10,7 +10,7 @@ export default function TableComponent(props: any) {
         navigate(
           props.is_employee
             ? `/employees/${props.employee_id}`
-            : `/employees/${props.timesheet_id}`
+            : `/timesheets/${props.timesheet_id}`
         )
       }
     >
