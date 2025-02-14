@@ -21,7 +21,7 @@ export default function TimesheetFormComponent({
       <h1 className="mt-20">
         {!update ? "Create New Timesheet" : "Update Timesheet"}
       </h1>
-      <Form method="post" className="timesheet-form">
+      <Form method={update ? "put" : "post"} className="timesheet-form">
         <section>
           <div className="mt-10 flex a-i-c">
             <label htmlFor="employees_input_section">

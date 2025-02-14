@@ -63,7 +63,7 @@ export default function EmployeeFormComponent({ update, employee_data }: any) {
   };
 
   return (
-    <Form method="post" encType="multipart/form-data">
+    <Form method={update ? "put" : "post"} encType="multipart/form-data">
       <section className="flex ">
         <section>
           <h1 className="form-title">
