@@ -93,4 +93,22 @@ const getOrderByQuery = (order_by: string, order: string, text: string) => {
   `;
 };
 
-export { getUpdateStatementQueryAndParams, getOrderByQuery };
+const getFilterByQuery = (filter_by: string, filter: string, text: string) => {
+  return `
+  SELECT * FROM employees
+  WHERE ${
+    filter_by == "full_name"
+      ? `LENGTH(full_name) ${filter}`
+      : `${
+          filter_by == "salary" ? `salary ${filter}` : `email LIKE %${filter}%`
+        }`
+  }
+  ${
+    text == ""
+      ? ""
+      : `AND (full_name LIKE %${text}% OR phone_number LIKE %${text}% OR salary LIKE %${text}% OR job_level LIKE %${text}% OR department LIKE %${text}%)`
+  }
+`;
+};
+
+export { getUpdateStatementQueryAndParams, getOrderByQuery, getFilterByQuery };
