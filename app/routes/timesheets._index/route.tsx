@@ -30,6 +30,19 @@ export default function TimesheetsPage() {
   ] = useState([]);
   const [is_calendar, setIsCalendar] = useState(true);
   const [search_bar_text, setSearchBarText] = useState("");
+
+  const [employees_names, setEmployeesNames] = useState<any>([]);
+  const [id, setId] = useState(0);
+  useEffect(() => {
+    const arr = [{ id: 0, full_name: "None" }];
+    timesheetsAndEmployeesWithImages.forEach((element: any) => {
+      arr.push({
+        id: element.employee_id,
+        full_name: element.full_name,
+      });
+    });
+    setEmployeesNames(arr);
+  }, []);
   useEffect(() => {
     if (search_bar_text == "") {
       setFilteredTimesheetsAndEmployeesWithImages(
@@ -85,13 +98,31 @@ export default function TimesheetsPage() {
             />
           </div>
         ) : (
-          <div className="flex flex-column">
-            <section className="flex j-c-c w-100">
-              <SearchBarComponent
-                placeholder={"Search for timesheet"}
-                search_bar_text={search_bar_text}
-                setSearchBarText={setSearchBarText}
-              />
+          <div className="flex flex-column table-view">
+            <SearchBarComponent
+              placeholder={"Search for timesheet"}
+              search_bar_text={search_bar_text}
+              setSearchBarText={setSearchBarText}
+            />
+            <section className="flex j-c-c w-100 a-i-c mt-20">
+              <label htmlFor="employees_input_section">
+                Search by employee:{" "}
+              </label>
+              <select
+                name="employee_id"
+                id="employees_input_section"
+                value={id}
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  setId(parseInt(e.target.value));
+                }}
+              >
+                {employees_names.map((employee: any) => (
+                  <option value={employee.id} key={employee.id}>
+                    {employee.full_name}
+                  </option>
+                ))}
+              </select>
             </section>
             <article className="flex timesheets-container mt-10">
               {filtered_times_and_employees_with_images.map(

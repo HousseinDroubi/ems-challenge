@@ -25,3 +25,16 @@
   column-gap: 10px;
   flex-wrap: wrap;
 }
+
+#employees_input_section {
+  margin-left: 10px;
+  height: 30px;
+  width: 200px;
+  background-color: var(--light-gray);
+  border-radius: 7px;
+  outline: none;
+}
+
+.table-view label {
+  color: var(--light-gray);
+}
