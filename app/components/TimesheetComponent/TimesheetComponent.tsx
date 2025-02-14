@@ -1,6 +1,7 @@
 import TableComponent from "../TableComponent/TableComponent";
 import TimeIcon from "~/assets/icons/time.png";
 import "./TimesheetComponent.css";
+import TableDetailsComponent from "../TableDetailsComponent/TableDetailsComponent";
 
 export default function TimesheetComponent({ timesheetAndEmployee }: any) {
   console.log(timesheetAndEmployee);
@@ -12,14 +13,16 @@ export default function TimesheetComponent({ timesheetAndEmployee }: any) {
       full_name={timesheetAndEmployee.full_name}
     >
       <br />
-      <div className="flex a-i-c timesheet-component-salary">
-        <img src={TimeIcon} alt="Start" />
-        <h4>Start: {timesheetAndEmployee.start_time.replace("T", " ")}</h4>
-      </div>
-      <div className="flex a-i-c timesheet-component-salary">
-        <img src={TimeIcon} alt="End" />
-        <h4>End: {timesheetAndEmployee.end_time.replace("T", " ")}</h4>
-      </div>
+      <TableDetailsComponent
+        icon={TimeIcon}
+        content={`Start: ${timesheetAndEmployee.start_time.replace("T", " ")}`}
+        alt="Start"
+      />
+      <TableDetailsComponent
+        icon={TimeIcon}
+        content={`End: ${timesheetAndEmployee.end_time.replace("T", " ")}`}
+        alt="End"
+      />
     </TableComponent>
   );
 }
