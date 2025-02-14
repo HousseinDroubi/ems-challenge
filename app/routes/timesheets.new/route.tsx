@@ -12,6 +12,7 @@ import type { ActionFunction } from "react-router";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { useEffect, useState } from "react";
 import PopupComponent from "~/components/PopupComponent/PopupComponent";
+import { isEndDateGreaterThanStartDate, isValidDate } from "~/functions/date";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -23,15 +24,30 @@ export const action: ActionFunction = async ({ request }) => {
     return {
       error_message: "Please choose an employee",
     };
+  } else if (!isValidDate(String(start_time))) {
+    return {
+      error_message: "Invalid start time",
+    };
+  } else if (!isValidDate(String(end_time))) {
+    return {
+      error_message: "Invalid start time",
+    };
+  } else if (
+    !isEndDateGreaterThanStartDate(String(start_time), String(end_time))
+  ) {
+    return {
+      error_message: "End time must be greater than start time",
+    };
+  } else {
+    // Send request
+    const db = await getDB();
+    await db.run(
+      "INSERT INTO timesheets (employee_id, start_time, end_time) VALUES (?, ?, ?)",
+      [employee_id, start_time, end_time]
+    );
   }
-  console.log(start_time);
-  // const db = await getDB();
-  // await db.run(
-  //   "INSERT INTO timesheets (employee_id, start_time, end_time) VALUES (?, ?, ?)",
-  //   [employee_id, start_time, end_time]
-  // );
 
-  // return redirect("/timesheets");
+  return redirect("/timesheets");
 };
 
 export default function NewTimesheetPage() {
