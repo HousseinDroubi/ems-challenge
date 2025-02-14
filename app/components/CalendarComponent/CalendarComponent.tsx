@@ -1,3 +1,4 @@
+import { createEventModalPlugin } from "@schedule-x/event-modal";
 import {
   createViewWeek,
   createViewMonthGrid,
@@ -10,6 +11,8 @@ import "./CalendarComponent.css";
 import { getFormattedToday } from "~/functions/date";
 
 export default function CalendarComponent({ timesheetsAndEmployees }: any) {
+  const eventModal = createEventModalPlugin();
+
   const calendar = useCalendarApp({
     views: [
       createViewDay(),
@@ -27,6 +30,7 @@ export default function CalendarComponent({ timesheetsAndEmployees }: any) {
       };
     }),
     selectedDate: getFormattedToday(),
+    plugins: [eventModal],
   });
   return (
     <>
