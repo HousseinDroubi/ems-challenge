@@ -8,7 +8,7 @@ import { ScheduleXCalendar, useCalendarApp } from "@schedule-x/react";
 import "@schedule-x/theme-default/dist/index.css";
 import "./CalendarComponent.css";
 
-export default function CalendarComponent() {
+export default function CalendarComponent({ timesheetsAndEmployees }: any) {
   const calendar = useCalendarApp({
     views: [
       createViewDay(),
