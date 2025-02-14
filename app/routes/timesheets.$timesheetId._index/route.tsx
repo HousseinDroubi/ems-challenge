@@ -18,6 +18,10 @@ export async function loader({ request }: any) {
       full_name: element.full_name,
     };
   });
+  data.employees.unshift({
+    id: 0,
+    full_name: "None",
+  });
   data.timesheet = {
     id: timesheetAndEmployees[0].id,
     start_time: timesheetAndEmployees[0].start_time,
