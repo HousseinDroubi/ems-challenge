@@ -1,4 +1,4 @@
-import { Form, Link } from "react-router";
+import { Form, Link, useLocation } from "react-router";
 import "./TimesheetFormComponent.css";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import { useEffect, useState } from "react";
@@ -8,6 +8,13 @@ export default function TimesheetFormComponent({
   update,
   timesheet,
 }: any) {
+  const [drop_list_id, setDropListId] = useState(
+    update
+      ? employees.findIndex(
+          (element: any) => element.id === timesheet.employee_id
+        )
+      : 0
+  );
   return (
     <article className="timesheet-container">
       <h1 className="mt-20">
@@ -20,13 +27,10 @@ export default function TimesheetFormComponent({
               <select
                 name="employee_id"
                 id="employees_input_section"
-                defaultValue={
-                  update
-                    ? employees.findIndex(
-                        (element: any) => element.id === timesheet.employee_id
-                      )
-                    : undefined
-                }
+                value={drop_list_id}
+                onChange={(e) => {
+                  setDropListId(e.target.value);
+                }}
               >
                 {employees.map((employee: any) => (
                   <option value={employee.id} key={employee.id}>
