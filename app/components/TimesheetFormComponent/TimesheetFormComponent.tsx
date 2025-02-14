@@ -1,8 +1,19 @@
 import { Form } from "react-router";
 import "./TimesheetFormComponent.css";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
+import { useEffect } from "react";
 
-export default function TimesheetFormComponent({ employees, update }: any) {
+export default function TimesheetFormComponent({
+  employees,
+  update,
+  timesheet,
+}: any) {
+  useEffect(() => {
+    if (update) {
+      console.log(employees);
+      console.log(timesheet);
+    }
+  }, []);
   return (
     <article className="timesheet-container">
       <h1 className="mt-20">
