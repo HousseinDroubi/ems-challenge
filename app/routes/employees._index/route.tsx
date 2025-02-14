@@ -1,4 +1,4 @@
-import { Form, useLoaderData } from "react-router";
+import { Form, useLoaderData, type ActionFunction } from "react-router";
 import EmployeeComponent from "~/components/EmployeeComponent/EmployeeComponent";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { getDB } from "~/db/getDB";
@@ -7,6 +7,7 @@ import "./route.css";
 import SearchBarComponent from "~/components/SearchBarComponent/SearchBarComponent";
 import { useEffect, useState } from "react";
 import ButtonComponent from "~/components/ButtonComponent/ButtonComponent";
+import { getOrderByQuery } from "~/functions/sql";
 
 export async function loader() {
   const db = await getDB();
@@ -16,7 +17,18 @@ export async function loader() {
   });
   return { employees };
 }
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+  let query = "";
 
+  if (formData.has("clicked_order_by")) {
+    query = getOrderByQuery(
+      String(formData.get("order_by")),
+      String(formData.get("order")),
+      String(formData.get("search_bar"))
+    );
+  }
+};
 export default function EmployeesPage() {
   const { employees } = useLoaderData();
   const [search_bar_text, setSearchBarText] = useState("");
@@ -58,7 +70,7 @@ export default function EmployeesPage() {
         ]}
       />
       <div>
-        <Form>
+        <Form method="post">
           <SearchBarComponent
             placeholder="Just type..."
             search_bar_text={search_bar_text}
@@ -74,10 +86,13 @@ export default function EmployeesPage() {
               </select>
               <label htmlFor="order">Order:</label>
               <select name="order" id="order">
-                <option value="asc">ASC</option>
-                <option value="desc">DESC</option>
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
               </select>
-              <ButtonComponent title="Apply Order search" />
+              <ButtonComponent
+                title="Apply Order search"
+                name="clicked_order_by"
+              />
             </div>
           </section>
           <section>
@@ -92,7 +107,10 @@ export default function EmployeesPage() {
               <select name="filter" id="filter">
                 {/* To be filled */}
               </select>
-              <ButtonComponent title="Apply filter search" />
+              <ButtonComponent
+                title="Apply filter search"
+                name="click_apply_filter"
+              />
             </div>
           </section>
         </Form>
