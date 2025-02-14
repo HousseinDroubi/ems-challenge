@@ -6,6 +6,7 @@ import CalendarComponent from "~/components/CalendarComponent/CalendarComponent"
 import "./route.css";
 import TimesheetComponent from "~/components/TimesheetComponent/TimesheetComponent";
 import { convertToBase64 } from "~/functions/file";
+import SearchBarComponent from "~/components/SearchBarComponent/SearchBarComponent";
 
 export async function loader() {
   const db = await getDB();
@@ -69,6 +70,9 @@ export default function TimesheetsPage() {
           </div>
         ) : (
           <article className="flex timesheets-container">
+            <section className="flex j-c-c w-100">
+              <SearchBarComponent />
+            </section>
             {timesheetsAndEmployeesWithImages.map(
               (timesheetAndEmployee: any) => (
                 <TimesheetComponent
