@@ -34,7 +34,9 @@ export default function TimesheetFormComponent({
                   </option>
                 ))}
               </select>
-              <Link to={"page.to"}>{"View Employee"}</Link>
+              <Link to={"page.to"} className="navlink">
+                {"View Employee"}
+              </Link>
             </section>
           </label>
         </div>

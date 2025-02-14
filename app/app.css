@@ -79,3 +79,13 @@ ul {
 h1 {
   font-size: 1.5em;
 }
+
+/* Shared classes */
+.navlink {
+  margin-left: 14px;
+  font-size: large;
+  border-radius: 7px;
+  background-color: var(--primary);
+  padding: 6px;
+  text-decoration: none;
+}

@@ -8,7 +8,9 @@ export default function NavBarComponent({ pages }: any) {
       <ul className="flex j-c-e">
         {pages.map((page: any) => (
           <li key={page.to}>
-            <Link to={page.to}>{page.title}</Link>
+            <Link to={page.to} className="navlink">
+              {page.title}
+            </Link>
           </li>
         ))}
       </ul>

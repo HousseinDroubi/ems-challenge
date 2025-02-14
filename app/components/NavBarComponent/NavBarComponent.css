@@ -10,11 +10,6 @@ a {
 
 .nav-bar a {
   margin-right: 14px;
-  font-size: large;
-  border-radius: 7px;
-  background-color: var(--primary);
-  padding: 6px;
-  text-decoration: none;
 }
 
 .nav-bar {
