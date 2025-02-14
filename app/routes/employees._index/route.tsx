@@ -54,7 +54,11 @@ export const action: ActionFunction = async ({ request }) => {
   }
   return { employees };
 };
+
 export default function EmployeesPage() {
+  const itemsPerPage = 8;
+  const [current_page, setCurrentPage] = useState(1);
+
   const [option_filter_by, setOptionFilterBy] = useState<any>("full_name");
   const [options_filter, setOptionsFilter] = useState<any>([]);
 
@@ -65,7 +69,7 @@ export default function EmployeesPage() {
     filtered_times_and_employees_with_images,
     setFilteredTimesheetsAndEmployeesWithImages,
   ] = useState([]);
-
+  const [paginated_items, setPaginatedItems] = useState<any>();
   useEffect(() => {
     switch (option_filter_by) {
       case "full_name":
@@ -163,6 +167,19 @@ export default function EmployeesPage() {
       setFilteredTimesheetsAndEmployeesWithImages(arr);
     }
   }, [search_bar_text]);
+
+  useEffect(() => {
+    if (filtered_times_and_employees_with_images.length !== 0) {
+      setPaginatedItems(getPaginatedItems(current_page));
+      console.log(getPaginatedItems(current_page));
+    }
+  }, [filtered_times_and_employees_with_images]);
+
+  const getPaginatedItems = (page: number) => {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return filtered_times_and_employees_with_images.slice(startIndex, endIndex);
+  };
 
   return (
     <div>
