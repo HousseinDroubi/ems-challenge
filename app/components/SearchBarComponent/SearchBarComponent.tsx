@@ -1,7 +1,6 @@
 import "./SearchBarComponent.css";
 import SearchIcon from "~/assets/icons/search.png";
 import CloseIcon from "~/assets/icons/exit.png";
-import EnterIcon from "~/assets/icons/enter.png";
 import { useState } from "react";
 
 export default function SearchBarComponent({
@@ -33,11 +32,6 @@ export default function SearchBarComponent({
             onBlur={() => {
               setIsHovering(false);
             }}
-            onKeyDown={(e) => {
-              if (e.key == "Enter") {
-                setSearchBarText(search_bar_text);
-              }
-            }}
           />
         </div>
         <div className="flex j-c-s-e a-i-c">
@@ -59,10 +53,6 @@ export default function SearchBarComponent({
           <div className="flex a-i-c">
             <p>Close</p>
             <img src={CloseIcon} alt="Close" />
-          </div>
-          <div className="flex a-i-c">
-            <p>Enter</p>
-            <img src={EnterIcon} alt="Enter" />
           </div>
         </section>
       )}
