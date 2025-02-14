@@ -1,0 +1,17 @@
+.choices label {
+  color: var(--light-gray);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--primary);
+}
+
+.choices label:nth-child(3) {
+  margin-left: 30px;
+}
+
+.choices input {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}

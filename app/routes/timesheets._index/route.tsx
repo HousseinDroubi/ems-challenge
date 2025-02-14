@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getDB } from "~/db/getDB";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import CalendarComponent from "~/components/CalendarComponent/CalendarComponent";
+import "./route.css";
 
 export async function loader() {
   const db = await getDB();
@@ -24,8 +25,8 @@ export default function TimesheetsPage() {
           { to: "/timesheets/new", title: "New Timesheet" },
         ]}
       />
-      <div className="flex">
-        <section className="choices">
+      <div className="flex j-c-c">
+        <section className="choices flex a-i-c mt-10">
           <label htmlFor="calendar">Calendar</label>
           <input
             type="radio"
