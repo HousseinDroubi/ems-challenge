@@ -37,7 +37,12 @@ export const action: ActionFunction = async ({ request }) => {
     };
   } else {
     // update request
-    console.log(formData);
+    const db = await getDB();
+    const id = request.url.split("/").pop();
+    await db.run(
+      `UPDATE timesheets SET employee_id = ?, start_time = ?, end_time = ? WHERE id = ?`,
+      [employee_id, start_time, end_time, id]
+    );
   }
 
   return redirect("/timesheets");
