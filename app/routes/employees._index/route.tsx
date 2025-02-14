@@ -4,6 +4,7 @@ import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { getDB } from "~/db/getDB";
 import { convertToBase64 } from "~/functions/file";
 import "./route.css";
+import SearchBarComponent from "~/components/SearchBarComponent/SearchBarComponent";
 
 export async function loader() {
   const db = await getDB();
@@ -25,6 +26,7 @@ export default function EmployeesPage() {
         ]}
       />
       <div>
+        <SearchBarComponent />
         <article className="employees-container flex w-100">
           {employees.map((employee: any) => (
             <EmployeeComponent employee={employee} key={employee.id} />
