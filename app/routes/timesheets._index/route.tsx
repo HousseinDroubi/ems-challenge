@@ -132,7 +132,7 @@ export default function TimesheetsPage() {
                 ))}
               </select>
             </section>
-            <article className="flex timesheets-container mt-10">
+            <article className="flex timesheets-container mt-10 j-c-s-e">
               {filtered_times_and_employees_with_images.map(
                 (timesheetAndEmployee: any) => (
                   <TimesheetComponent

@@ -261,7 +261,7 @@ export default function EmployeesPage() {
             </div>
           </section>
         </Form>
-        <article className="employees-container flex w-100">
+        <article className="employees-container flex w-100 j-c-s-e">
           {paginated_items &&
             paginated_items.map((employee: any) => (
               <EmployeeComponent employee={employee} key={employee.id} />
