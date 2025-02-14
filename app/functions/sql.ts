@@ -87,7 +87,7 @@ const getOrderByQuery = (order_by: string, order: string, text: string) => {
     ${
       text == ""
         ? ""
-        : `WHERE full_name LIKE %${text}% OR phone_number LIKE %${text}% OR salary LIKE %${text}% OR job_level LIKE %${text}% OR department LIKE %${text}%`
+        : `WHERE full_name LIKE '%${text}%' OR phone_number LIKE '%${text}%' OR salary LIKE '%${text}%' OR job_level LIKE '%${text}%' OR department LIKE '%${text}%'`
     }
     ORDER BY ${order_by} ${order}
   `;
@@ -106,7 +106,7 @@ const getFilterByQuery = (filter_by: string, filter: string, text: string) => {
   ${
     text == ""
       ? ""
-      : `AND (full_name LIKE %${text}% OR phone_number LIKE %${text}% OR salary LIKE %${text}% OR job_level LIKE %${text}% OR department LIKE %${text}%)`
+      : `AND (full_name LIKE '%${text}%' OR phone_number LIKE '%${text}%' OR salary LIKE '%${text}%' OR job_level LIKE '%${text}%' OR department LIKE '%${text}%')`
   }
 `;
 };
