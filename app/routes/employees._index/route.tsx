@@ -1,4 +1,9 @@
-import { Form, useLoaderData, type ActionFunction } from "react-router";
+import {
+  Form,
+  useActionData,
+  useLoaderData,
+  type ActionFunction,
+} from "react-router";
 import EmployeeComponent from "~/components/EmployeeComponent/EmployeeComponent";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
 import { getDB } from "~/db/getDB";
@@ -18,24 +23,35 @@ export async function loader() {
   return { employees };
 }
 export const action: ActionFunction = async ({ request }) => {
+  const db = await getDB();
   const formData = await request.formData();
   let query = "";
-
   if (formData.has("clicked_order_by")) {
     query = getOrderByQuery(
       String(formData.get("order_by")),
       String(formData.get("order")),
       String(formData.get("search_bar"))
     );
+    const arr = await db.all(query);
+    const employees = arr.map((employee) => {
+      return { ...employee, image: convertToBase64(employee.face_image) };
+    });
+    return { employees };
   }
 };
 export default function EmployeesPage() {
   const { employees } = useLoaderData();
+  const data = useActionData();
   const [search_bar_text, setSearchBarText] = useState("");
   const [
     filtered_times_and_employees_with_images,
     setFilteredTimesheetsAndEmployeesWithImages,
   ] = useState([]);
+
+  useEffect(() => {
+    if (data) setFilteredTimesheetsAndEmployeesWithImages(data.employees);
+  }, [data]);
+
   useEffect(() => {
     if (search_bar_text == "") {
       setFilteredTimesheetsAndEmployeesWithImages(employees);
