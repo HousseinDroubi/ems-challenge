@@ -16,6 +16,7 @@ export const action: ActionFunction = async ({ request }) => {
   const employee_id = formData.get("employee_id"); // <select /> input with name="employee_id"
   const start_time = formData.get("start_time");
   const end_time = formData.get("end_time");
+  const summary = formData.get("summary");
 
   if (String(employee_id) === "0") {
     return {
@@ -40,8 +41,8 @@ export const action: ActionFunction = async ({ request }) => {
     const db = await getDB();
     const id = request.url.split("/").pop();
     await db.run(
-      `UPDATE timesheets SET employee_id = ?, start_time = ?, end_time = ? WHERE id = ?`,
-      [employee_id, start_time, end_time, id]
+      `UPDATE timesheets SET employee_id = ?, start_time = ?, end_time = ?, summary = ? WHERE id = ?`,
+      [employee_id, start_time, end_time, summary, id]
     );
   }
 
@@ -71,6 +72,7 @@ export async function loader({ request }: any) {
     id: timesheetAndEmployees[0].id,
     start_time: timesheetAndEmployees[0].start_time,
     end_time: timesheetAndEmployees[0].end_time,
+    summary: timesheetAndEmployees[0].summary,
     employee_id: timesheetAndEmployees[0].employee_id,
   };
   return { data };
