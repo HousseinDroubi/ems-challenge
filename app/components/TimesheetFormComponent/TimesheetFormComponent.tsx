@@ -1,10 +1,10 @@
 import { Form } from "react-router";
-import "./TimesheetComponent.css";
+import "./TimesheetFormComponent.css";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
 export default function TimesheetComponent({ employees }: any) {
   return (
-    <article>
+    <article className="timesheet-container">
       <h1 className="mt-20">Create New Timesheet</h1>
       <Form method="post" className="timesheet-form">
         <div className="mt-10">

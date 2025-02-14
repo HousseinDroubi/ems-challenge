@@ -71,7 +71,7 @@ export default function NewTimesheetPage() {
     is_visible: false,
   });
   return (
-    <div className="timesheet-container">
+    <div>
       <NavBarComponent
         pages={[
           { to: "/employees", title: "Employees" },
