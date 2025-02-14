@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router";
 import NavBarComponent from "~/components/NavBarComponent/NavBarComponent";
+import TimesheetFormComponent from "~/components/TimesheetFormComponent/TimesheetFormComponent";
 import { getDB } from "~/db/getDB";
 
 export async function loader({ request }: any) {
@@ -37,6 +38,11 @@ export default function TimesheetPage() {
           { to: "/timesheets", title: "Timesheets" },
           { to: "/timesheets/new", title: "New Timesheet" },
         ]}
+      />
+      <TimesheetFormComponent
+        update
+        employees={data.employees}
+        timesheet={data.timesheet}
       />
     </div>
   );
