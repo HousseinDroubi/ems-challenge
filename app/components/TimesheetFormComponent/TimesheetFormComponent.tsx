@@ -1,17 +1,21 @@
 import { Form } from "react-router";
 import "./TimesheetFormComponent.css";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function TimesheetFormComponent({
   employees,
   update,
   timesheet,
 }: any) {
+  const [selected_option, setSelectedOption] = useState(0);
+
   useEffect(() => {
     if (update) {
-      console.log(employees);
-      console.log(timesheet);
+      const index = employees.findIndex(
+        (element: any) => element.id === timesheet.employee_id
+      );
+      setSelectedOption(index);
     }
   }, []);
   return (
@@ -22,7 +26,17 @@ export default function TimesheetFormComponent({
       <Form method="post" className="timesheet-form">
         <div className="mt-10">
           <label htmlFor="employees_input_section">
-            <select name="employee_id" id="employees_input_section">
+            <select
+              name="employee_id"
+              id="employees_input_section"
+              value={selected_option}
+              onChange={(e) => {
+                const index = employees.findIndex((employee: any) => {
+                  return e.target.value == employee.id;
+                });
+                setSelectedOption(index);
+              }}
+            >
               {employees.map((employee: any) => (
                 <option value={employee.id} key={employee.id}>
                   {employee.full_name}
