@@ -169,9 +169,8 @@ export default function EmployeesPage() {
   }, [search_bar_text]);
 
   useEffect(() => {
-    if (filtered_times_and_employees_with_images.length !== 0) {
+    if (filtered_times_and_employees_with_images)
       setPaginatedItems(getPaginatedItems(current_page));
-    }
   }, [filtered_times_and_employees_with_images]);
 
   const getPaginatedItems = (page: number) => {
