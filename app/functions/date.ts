@@ -32,6 +32,14 @@ function isEndDateGreaterThanStartDate(
   return end_date > start_date;
 }
 
+const isNowBetweenStartTimeAndLastTime = (start_time: any, end_time: any) => {
+  const date = new Date();
+  return (
+    isEndDateGreaterThanStartDate(start_time, date.toISOString()) &&
+    isEndDateGreaterThanStartDate(date.toISOString(), end_time)
+  );
+};
+
 const getFormattedToday = () => {
   const today = new Date();
   const year = today.getFullYear();
@@ -49,4 +57,5 @@ export {
   isEndDateGreaterThanStartDate,
   getAgeFromBirthDate,
   getFormattedToday,
+  isNowBetweenStartTimeAndLastTime,
 };
