@@ -80,6 +80,21 @@ export default function EmployeesPage() {
               <ButtonComponent title="Apply Order search" />
             </div>
           </section>
+          <section>
+            <div className="order-section flex j-c-c a-i-c mt-20">
+              <label htmlFor="filter_by">Filter By:</label>
+              <select name="filter_by" id="filter_by">
+                <option value="full_name">Full name</option>
+                <option value="salary">Salary</option>
+                <option value="department">Department</option>
+              </select>
+              <label htmlFor="filter">Filter:</label>
+              <select name="filter" id="filter">
+                {/* To be filled */}
+              </select>
+              <ButtonComponent title="Apply filter search" />
+            </div>
+          </section>
         </Form>
         <article className="employees-container flex w-100">
           {filtered_times_and_employees_with_images.map((employee: any) => (
