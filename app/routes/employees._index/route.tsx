@@ -6,6 +6,7 @@ import { convertToBase64 } from "~/functions/file";
 import "./route.css";
 import SearchBarComponent from "~/components/SearchBarComponent/SearchBarComponent";
 import { useEffect, useState } from "react";
+import ButtonComponent from "~/components/ButtonComponent/ButtonComponent";
 
 export async function loader() {
   const db = await getDB();
@@ -63,6 +64,22 @@ export default function EmployeesPage() {
             search_bar_text={search_bar_text}
             setSearchBarText={setSearchBarText}
           />
+          <section>
+            <div className="order-section flex j-c-c a-i-c mt-20">
+              <label htmlFor="order_by">Order By:</label>
+              <select name="order_by" id="order_by">
+                <option value="full_name">Full name</option>
+                <option value="salary">Salary</option>
+                <option value="department">Department</option>
+              </select>
+              <label htmlFor="order">Order:</label>
+              <select name="order" id="order">
+                <option value="asc">ASC</option>
+                <option value="desc">DESC</option>
+              </select>
+              <ButtonComponent title="Apply Order search" />
+            </div>
+          </section>
         </Form>
         <article className="employees-container flex w-100">
           {filtered_times_and_employees_with_images.map((employee: any) => (

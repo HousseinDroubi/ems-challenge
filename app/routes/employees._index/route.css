@@ -3,3 +3,25 @@
   column-gap: 10px;
   flex-wrap: wrap;
 }
+
+.order-section label {
+  color: var(--light-gray);
+  font-size: 16px;
+  font-weight: 600;
+}
+.order-section select {
+  margin-left: 20px;
+  width: 150px;
+  height: 40px;
+  outline: none;
+  border-radius: 7px;
+  background: var(--light-gray);
+}
+
+.order-section label:nth-child(3) {
+  margin-left: 20px;
+}
+.order-section button {
+  margin-top: 0;
+  margin-left: 20px;
+}
